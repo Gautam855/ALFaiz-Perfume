@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wishlist | ALFAIZAM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .wishlist-header {
+            padding: 150px 0 60px;
+            text-align: center;
+        }
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            padding-bottom: 100px;
+        }
+        @media (max-width: 992px) {
+            .wishlist-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 576px) {
+            .wishlist-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header" class="scrolled">
+        <div class="container">
+            <nav class="nav-container">
+                <div class="menu-toggle" id="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <a href="index.html" class="logo">ALFAIZAM</a>
+                <div class="nav-icons">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="wishlist.html"><i class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="wishlist-header">
+        <div class="container">
+            <h1 style="font-size: 42px;">Your Favorites</h1>
+            <p style="color: var(--text-muted); letter-spacing: 2px; margin-top: 10px;">ITEMS YOU HAVE SAVED FOR LATER</p>
+        </div>
+    </div>
+
+    <section class="container">
+        <div class="wishlist-grid">
+            <!-- Saved Product 1 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/oud.png" alt="Oud">
+                    <button style="position: absolute; top: 15px; right: 15px; background: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-xmark" style="font-size: 12px;"></i></button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Oud</p>
+                    <h3 class="product-title">Royal Oud Gold</h3>
+                    <p class="product-price">$280.00</p>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px; padding: 10px;">Select Options</button>
+                </div>
+            </div>
+            <!-- Saved Product 2 -->
+            <div class="product-card">
+                <div class="product-image">
+                    <img src="images/attar.png" alt="Attar">
+                    <button style="position: absolute; top: 15px; right: 15px; background: white; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center;"><i class="fa-solid fa-xmark" style="font-size: 12px;"></i></button>
+                </div>
+                <div class="product-info">
+                    <p class="product-category">Attar</p>
+                    <h3 class="product-title">Santal Essence</h3>
+                    <p class="product-price">$120.00</p>
+                    <button class="btn btn-primary" style="width: 100%; margin-top: 20px; padding: 10px;">Select Options</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer><div class="container"><div class="footer-grid"><div class="footer-col"><a href="index.html" class="logo" style="color: white; margin-bottom: 20px; display: block;">ALFAIZAM</a><p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">The ultimate destination for luxury fragrances and authentic Arabian oud.</p><div style="display: flex; gap: 15px;"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-pinterest"></i></a></div></div><div class="footer-col"><h4>Collections</h4><ul><li><a href="shop.html">Exquisite Oud</a></li><li><a href="shop.html">Premium Attar</a></li><li><a href="shop.html">Gift Sets</a></li><li><a href="shop.html">Bakhoor</a></li></ul></div><div class="footer-col"><h4>Customer Care</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="why-us.html">Shipping & Returns</a></li><li><a href="faq.html">FAQs</a></li><li><a href="reviews.html">Reviews</a></li></ul></div><div class="footer-col"><h4>About</h4><ul><li><a href="about.html">Our Story</a></li><li><a href="journal.html">Journal</a></li><li><a href="why-us.html">Why Choose Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2024 ALFAIZAM. All Rights Reserved.</p><div style="display: flex; gap: 20px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div></footer>
+
+    <script>
+        // Removal logic
+        const removeBtns = document.querySelectorAll('.fa-xmark');
+        removeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.target.closest('.product-card').remove();
+            });
+        });
+    </script>
+</body>
+</html>

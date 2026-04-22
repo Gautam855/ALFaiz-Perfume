@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Bag | ALFAIZAM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .cart-grid {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 60px;
+            padding-top: 150px;
+            padding-bottom: 100px;
+        }
+        .cart-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .cart-table th {
+            text-align: left;
+            padding-bottom: 20px;
+            text-transform: uppercase;
+            font-size: 13px;
+            letter-spacing: 1px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        .cart-item {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .cart-item td {
+            padding: 30px 0;
+        }
+        .cart-prod-info {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+        .cart-prod-img {
+            width: 100px;
+            height: 120px;
+            background: var(--beige);
+        }
+        .summary-box {
+            background: var(--beige);
+            padding: 40px;
+            height: fit-content;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+            font-size: 15px;
+        }
+        .summary-total {
+            border-top: 1px solid var(--border-color);
+            padding-top: 20px;
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 18px;
+        }
+        @media (max-width: 992px) {
+            .cart-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header" class="scrolled">
+        <div class="container">
+            <nav class="nav-container">
+                <div class="menu-toggle" id="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <a href="index.html" class="logo">ALFAIZAM</a>
+                <div class="nav-icons">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="wishlist.html"><i class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <div class="cart-grid">
+            <div>
+                <h1 style="font-size: 36px; margin-bottom: 40px;">Shopping Bag</h1>
+                <table class="cart-table">
+                    <thead>
+                        <tr>
+                            <th>Product</th>
+                            <th>Quantity</th>
+                            <th>Subtotal</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Item 1 -->
+                        <tr class="cart-item">
+                            <td>
+                                <div class="cart-prod-info">
+                                    <div class="cart-prod-img"><img src="images/oud.png" style="width:100%;height:100%;object-fit:cover;"></div>
+                                    <div>
+                                        <h3 style="font-size: 16px;">Royal Oud Gold</h3>
+                                        <p style="font-size: 12px; color: var(--text-muted);">Size: 50ml</p>
+                                        <p style="font-size: 14px; margin-top: 5px;">$280.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="display: flex; border: 1px solid var(--border-color); width: fit-content;">
+                                    <button style="padding: 5px 15px;">-</button>
+                                    <span style="padding: 5px 15px;">1</span>
+                                    <button style="padding: 5px 15px;">+</button>
+                                </div>
+                            </td>
+                            <td>$280.00</td>
+                            <td><i class="fa-solid fa-xmark" style="cursor: pointer; color: var(--text-muted);"></i></td>
+                        </tr>
+                        <!-- Item 2 -->
+                        <tr class="cart-item">
+                            <td>
+                                <div class="cart-prod-info">
+                                    <div class="cart-prod-img"><img src="images/attar.png" style="width:100%;height:100%;object-fit:cover;"></div>
+                                    <div>
+                                        <h3 style="font-size: 16px;">Santal Essence</h3>
+                                        <p style="font-size: 12px; color: var(--text-muted);">Size: 12ml</p>
+                                        <p style="font-size: 14px; margin-top: 5px;">$120.00</p>
+                                    </div>
+                                </div>
+                            </td>
+                            <td>
+                                <div style="display: flex; border: 1px solid var(--border-color); width: fit-content;">
+                                    <button style="padding: 5px 15px;">-</button>
+                                    <span style="padding: 5px 15px;">1</span>
+                                    <button style="padding: 5px 15px;">+</button>
+                                </div>
+                            </td>
+                            <td>$120.00</td>
+                            <td><i class="fa-solid fa-xmark" style="cursor: pointer; color: var(--text-muted);"></i></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div style="margin-top: 30px;">
+                    <a href="shop.html" style="text-transform: uppercase; font-size: 12px; letter-spacing: 1px;"><i class="fa-solid fa-arrow-left" style="margin-right: 10px;"></i> Continue Shopping</a>
+                </div>
+            </div>
+
+            <div class="summary-box">
+                <h3 style="margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px;">Order Summary</h3>
+                <div class="summary-row">
+                    <span>Subtotal</span>
+                    <span>$400.00</span>
+                </div>
+                <div class="summary-row">
+                    <span>Shipping</span>
+                    <span>Calculated at checkout</span>
+                </div>
+                <div class="summary-total">
+                    <div class="summary-row">
+                        <span>Total</span>
+                        <span>$400.00</span>
+                    </div>
+                </div>
+                <button class="btn btn-primary" style="width: 100%; margin-top: 30px;">Checkout</button>
+                <div style="margin-top: 20px; display: flex; justify-content: center; gap: 15px; font-size: 20px; color: var(--text-muted);">
+                    <i class="fa-brands fa-cc-visa"></i>
+                    <i class="fa-brands fa-cc-mastercard"></i>
+                    <i class="fa-brands fa-cc-amex"></i>
+                    <i class="fa-brands fa-cc-paypal"></i>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer><div class="container"><div class="footer-grid"><div class="footer-col"><a href="index.html" class="logo" style="color: white; margin-bottom: 20px; display: block;">ALFAIZAM</a><p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">The ultimate destination for luxury fragrances and authentic Arabian oud.</p><div style="display: flex; gap: 15px;"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-pinterest"></i></a></div></div><div class="footer-col"><h4>Collections</h4><ul><li><a href="shop.html">Exquisite Oud</a></li><li><a href="shop.html">Premium Attar</a></li><li><a href="shop.html">Gift Sets</a></li><li><a href="shop.html">Bakhoor</a></li></ul></div><div class="footer-col"><h4>Customer Care</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="why-us.html">Shipping & Returns</a></li><li><a href="faq.html">FAQs</a></li><li><a href="reviews.html">Reviews</a></li></ul></div><div class="footer-col"><h4>About</h4><ul><li><a href="about.html">Our Story</a></li><li><a href="journal.html">Journal</a></li><li><a href="why-us.html">Why Choose Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2024 ALFAIZAM. All Rights Reserved.</p><div style="display: flex; gap: 20px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div></footer>
+
+    <script>
+        // Simple mock removal
+        const clearBtns = document.querySelectorAll('.fa-xmark');
+        clearBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.target.closest('tr').remove();
+            });
+        });
+    </script>
+</body>
+</html>

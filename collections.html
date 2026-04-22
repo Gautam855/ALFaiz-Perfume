@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Collections | ALFAIZAM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Collections-specific styles ── */
+        .collection-hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+        }
+
+        .col-hero-panel {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .col-hero-panel img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.4s cubic-bezier(.4, 0, .2, 1), filter 1.4s;
+            filter: brightness(.55) saturate(.9);
+        }
+
+        .col-hero-panel:hover img {
+            transform: scale(1.06);
+            filter: brightness(.4) saturate(1.1);
+        }
+
+        .col-hero-panel::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(13, 12, 11, .92) 0%, rgba(13, 12, 11, .1) 55%, transparent 100%);
+            z-index: 1;
+        }
+
+        .col-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 56px 52px;
+            color: white;
+        }
+
+        .col-hero-content .label {
+            color: var(--gold-pale);
+            margin-bottom: 16px;
+            display: block;
+            opacity: .7;
+        }
+
+        .col-hero-content h2 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(36px, 4vw, 58px);
+            font-weight: 300;
+            margin-bottom: 14px;
+            line-height: 1.05;
+        }
+
+        .col-hero-content p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, .55);
+            line-height: 1.75;
+            max-width: 320px;
+            margin-bottom: 28px;
+        }
+
+        .col-hero-content .btn {
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity .4s, transform .4s;
+        }
+
+        .col-hero-panel:hover .col-hero-content .btn {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Count badge */
+        .col-hero-count {
+            position: absolute;
+            top: 36px;
+            right: 36px;
+            z-index: 2;
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .4);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .col-hero-count span {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        @media (max-width: 768px) {
+            .collection-hero-grid {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .col-hero-panel {
+                min-height: 55vw;
+            }
+
+            .col-hero-content .btn {
+                opacity: 1;
+                transform: none;
+            }
+        }
+
+        /* ── Seasonal card ── */
+        .seasonal-card {
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .seasonal-card img {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(.4, 0, .2, 1);
+            display: block;
+        }
+
+        .seasonal-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .seasonal-card-body {
+            padding: 28px 4px 0;
+        }
+
+        .seasonal-card-body h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 10px;
+        }
+
+        .seasonal-card-body p {
+            font-size: 13px;
+            color: var(--ash);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .seasonal-card-tag {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--gold);
+            color: var(--ink);
+            font-size: 8px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 5px 14px;
+            font-weight: 600;
+        }
+
+        /* ── Story section ── */
+        .story-strip {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 580px;
+        }
+
+        @media (max-width: 768px) {
+            .story-strip {
+                grid-template-columns: 1fr;
+            }
+
+            .story-img-panel {
+                height: 320px;
+            }
+        }
+
+        .story-img-panel {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .story-img-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.4s;
+        }
+
+        .story-img-panel:hover img {
+            transform: scale(1.04);
+        }
+
+        .story-text-panel {
+            background: var(--ink);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 72px;
+        }
+
+        .story-text-inner {
+            max-width: 480px;
+        }
+
+        @media (max-width: 992px) {
+            .story-text-panel {
+                padding: 56px 40px;
+            }
+        }
+
+        /* ── Smart slider ── */
+        .smart-slider-prev,
+        .smart-slider-next {
+            position: absolute;
+            top: 38%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: white;
+            color: var(--ink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+            z-index: 10;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .smart-slider-prev:hover,
+        .smart-slider-next:hover {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 6px 28px rgba(200, 164, 80, 0.4);
+        }
+
+        .smart-slider-prev {
+            left: -8px;
+        }
+
+        .smart-slider-next {
+            right: -8px;
+        }
+
+        .smart-slider-prev.hidden,
+        .smart-slider-next.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .smart-slider-section {
+            position: relative;
+        }
+
+        .smart-slider-wrapper {
+            overflow: hidden;
+        }
+
+        .smart-slider-track {
+            display: flex;
+            will-change: transform;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 28px;
+        }
+
+        .slider-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--ash);
+            cursor: pointer;
+            transition: all 0.35s;
+        }
+
+        .slider-dot.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            width: 26px;
+            border-radius: 4px;
+        }
+
+        /* ── Filter tabs ── */
+        .filter-tabs-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .ftab {
+            font-family: 'Jost', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ash);
+            padding: 10px 22px;
+            border: 1px solid var(--bd-light);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ftab:hover {
+            color: var(--ink);
+            border-color: var(--charcoal);
+        }
+
+        .ftab.active {
+            background: var(--ink);
+            color: var(--cream);
+            border-color: var(--ink);
+        }
+
+        /* ── Stats bar ── */
+        .stats-bar {
+            background: var(--ink);
+            padding: 56px 0;
+            border-top: 1px solid rgba(200, 164, 80, .1);
+        }
+
+        .stats-bar-inner {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: rgba(255, 255, 255, .06);
+        }
+
+        .stat-cell {
+            background: var(--ink);
+            padding: 40px 32px;
+            text-align: center;
+        }
+
+        .stat-cell-num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 60px;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-cell-label {
+            font-size: 9px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .35);
+        }
+
+        @media (max-width: 768px) {
+            .stats-bar-inner {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-bar-inner {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement-bar">
+        <div class="marquee-track">
+            <span class="marquee-item">Complimentary Worldwide Shipping <span class="dot"></span></span>
+            <span class="marquee-item">100% Authentic Arabian Oud <span class="dot"></span></span>
+            <span class="marquee-item">Extrait de Parfum — 12 Hour Longevity <span class="dot"></span></span>
+            <span class="marquee-item">Hand-Crafted by Master Perfumers Since 1992 <span class="dot"></span></span>
+            <span class="marquee-item">Complimentary Worldwide Shipping <span class="dot"></span></span>
+            <span class="marquee-item">100% Authentic Arabian Oud <span class="dot"></span></span>
+            <span class="marquee-item">Extrait de Parfum — 12 Hour Longevity <span class="dot"></span></span>
+            <span class="marquee-item">Hand-Crafted by Master Perfumers Since 1992 <span class="dot"></span></span>
+        </div>
+    </div>
+
+    <header class="site-header opaque" id="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div style="display:flex;align-items:center;gap:18px;">
+                    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                    <a href="index.html" class="logo"><span class="logo-gem"></span>Alfaizam</a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="collections.html"
+                        style="color:var(--ink)!important;border-bottom:1px solid var(--gold);padding-bottom:2px;">Collections</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <a href="wishlist.html" class="hide-mobile"><i class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html" style="position:relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-badge">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mobile-close" id="mobile-close"><i class="fa-solid fa-xmark"></i></button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-footer"><a href="wishlist.html">Wishlist</a><a href="cart.html">Bag</a></div>
+    </nav>
+
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close-btn" id="search-close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="search-body">
+            <span class="search-label">Search Our Collection</span>
+            <input type="text" class="search-field" placeholder="Oud, Attar, Rose…" id="search-field">
+            <div class="search-hints">
+                <span class="search-hint">Royal Oud</span>
+                <span class="search-hint">Santal</span>
+                <span class="search-hint">Gift Sets</span>
+                <span class="search-hint">Bakhoor</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ PAGE HERO ══ -->
+    <div class="page-hero" style="padding: 210px 0 100px;">
+        <div class="page-hero-bg"></div>
+        <div class="page-hero-glow"></div>
+        <div class="page-hero-content" style="padding:0 20px;">
+            <span class="label" style="margin-bottom:20px;display:block;">Select Your Journey</span>
+            <div class="gold-line gold-line-center" style="margin-top:16px;"></div>
+            <h1 style="margin-top:20px;font-size:clamp(52px,8vw,100px);">Our Collections</h1>
+            <p
+                style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:3px;text-transform:uppercase;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.8;">
+                Four worlds of scent. One house of mastery.
+            </p>
+        </div>
+    </div>
+
+    <!-- ══ COLLECTION HERO PANELS (4 categories) ══ -->
+    <div class="collection-hero-grid">
+        <!-- Perfume -->
+        <div class="col-hero-panel">
+            <img src="images/hero.png" alt="Perfume Collection">
+            <div class="col-hero-count"><span>28</span> Fragrances</div>
+            <div class="col-hero-content">
+                <span class="label">The Classic</span>
+                <h2>Perfume</h2>
+                <p>Connoisseurs of perfumery — heritage, held in a bottle. Long-lasting Extrait de Parfum crafted for
+                    the discerning.</p>
+                <a href="shop.html" class="btn btn-gold">Explore →</a>
+            </div>
+        </div>
+        <!-- Attar -->
+        <div class="col-hero-panel">
+            <img src="images/attar.png" alt="Attar Collection">
+            <div class="col-hero-count"><span>16</span> Attars</div>
+            <div class="col-hero-content">
+                <span class="label">The Timeless</span>
+                <h2>Attar</h2>
+                <p>Rich, pure fragrant oils — a timeless touch of tradition passed through centuries of Arabian mastery.
+                </p>
+                <a href="shop.html" class="btn btn-gold">Explore →</a>
+            </div>
+        </div>
+        <!-- Gift Sets -->
+        <div class="col-hero-panel">
+            <img src="images/oud.png" alt="Gift Sets">
+            <div class="col-hero-count"><span>12</span> Sets</div>
+            <div class="col-hero-content">
+                <span class="label">The Gift</span>
+                <h2>Gift Sets</h2>
+                <p>Thoughtfully wrapped in velvet — the fragrance of memories. The perfect luxury gift for those you
+                    love.</p>
+                <a href="shop.html" class="btn btn-gold">Explore →</a>
+            </div>
+        </div>
+        <!-- Dakhoon -->
+        <div class="col-hero-panel">
+            <img src="images/attar.png" alt="Dakhoon Collection">
+            <div class="col-hero-count"><span>9</span> Blends</div>
+            <div class="col-hero-content">
+                <span class="label">The Ritual</span>
+                <h2>Dakhoon</h2>
+                <p>Aromas of royalty — incense that calms the spirit and transforms your space into a sanctuary of
+                    serenity.</p>
+                <a href="shop.html" class="btn btn-gold">Explore →</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ STATS BAR ══ -->
+    <div class="stats-bar">
+        <div class="container">
+            <div class="stats-bar-inner">
+                <div class="stat-cell reveal">
+                    <p class="stat-cell-num">65<span style="font-size:.45em">+</span></p>
+                    <p class="stat-cell-label">Fragrances</p>
+                </div>
+                <div class="stat-cell reveal d1">
+                    <p class="stat-cell-num">200<span style="font-size:.45em">+</span></p>
+                    <p class="stat-cell-label">Rare Ingredients</p>
+                </div>
+                <div class="stat-cell reveal d2">
+                    <p class="stat-cell-num">12</p>
+                    <p class="stat-cell-label">Master Perfumers</p>
+                </div>
+                <div class="stat-cell reveal d3">
+                    <p class="stat-cell-num">150<span style="font-size:.45em">+</span></p>
+                    <p class="stat-cell-label">Countries Served</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ TRENDING NOW — FILTER + SMART SLIDER ══ -->
+    <section class="section" style="background:var(--ivory);">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom:40px;">
+                <span class="label">Most Desired</span>
+                <div class="gold-line gold-line-center" style="margin-top:14px;"></div>
+                <h2 style="font-size:48px;margin-top:16px;">Trending Now</h2>
+            </div>
+
+            <div class="filter-tabs-wrap reveal" id="col-tabs">
+                <button class="ftab active" data-filter="all">All</button>
+                <button class="ftab" data-filter="perfume">Perfume</button>
+                <button class="ftab" data-filter="attar">Attar</button>
+                <button class="ftab" data-filter="gifset">Gift Sets</button>
+                <button class="ftab" data-filter="dakhoon">Dakhoon</button>
+            </div>
+
+            <div id="col-grid-wrap">
+                <div class="product-grid-auto" id="col-grid"></div>
+                <div class="smart-slider-section" id="col-slider-section" style="display:none;">
+                    <button class="smart-slider-prev" id="col-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="smart-slider-wrapper">
+                        <div class="smart-slider-track" id="col-track"></div>
+                    </div>
+                    <button class="smart-slider-next" id="col-next"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="slider-dots" id="col-dots"></div>
+                </div>
+            </div>
+
+            <div class="text-center" style="margin-top:48px;">
+                <a href="shop.html" class="btn btn-dark">View Full Catalog</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ STORY STRIP ══ -->
+    <div class="story-strip">
+        <div class="story-img-panel">
+            <img src="images/oud.png" alt="Our Craft">
+        </div>
+        <div class="story-text-panel">
+            <div class="story-text-inner reveal">
+                <span class="label" style="margin-bottom:16px;display:block;">A Curated World</span>
+                <div class="gold-line gold-line-left" style="margin-bottom:24px;"></div>
+                <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:clamp(32px,3.5vw,48px);font-weight:300;color:rgba(244,239,230,.9);margin-bottom:20px;line-height:1.2;">
+                    Each Collection<br>Tells a Story
+                </h2>
+                <p style="font-size:15px;color:rgba(255,255,255,.5);line-height:1.9;margin-bottom:40px;">
+                    Every scent we create is a chapter in the great book of Arabian perfumery. From the souks of Dubai
+                    to the gardens of Damascus, our ingredients carry centuries of heritage in every drop.
+                </p>
+                <a href="about.html" class="btn btn-outline-light">Discover Our Heritage</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ SEASONAL HIGHLIGHTS ══ -->
+    <section class="section" style="background:var(--cream);">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom:56px;">
+                <span class="label" style="margin-bottom:16px;display:block;">Exclusive Curations</span>
+                <div class="gold-line gold-line-center"></div>
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;margin-top:16px;">
+                    Seasonal Highlights</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
+                <div class="seasonal-card reveal">
+                    <img src="images/attar.png" alt="Spring Floral">
+                    <span class="seasonal-card-tag">Spring</span>
+                    <div class="seasonal-card-body">
+                        <h3>The Spring Floral Bloom</h3>
+                        <p>Delicate and uplifting notes of Taif rose and jasmine, perfect for the awakening season.</p>
+                        <a href="shop.html"
+                            style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;transition:gap .3s;"
+                            onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">
+                            Shop Now <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="seasonal-card reveal d1">
+                    <img src="images/oud.png" alt="Winter Reserve">
+                    <span class="seasonal-card-tag" style="background:var(--ink);color:var(--gold);">Winter</span>
+                    <div class="seasonal-card-body">
+                        <h3>The Winter Smoky Reserve</h3>
+                        <p>Deep, warm amber and aged agarwood blends designed for cold, intimate evenings.</p>
+                        <a href="shop.html"
+                            style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;transition:gap .3s;"
+                            onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">
+                            Shop Now <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="seasonal-card reveal d2">
+                    <img src="images/hero.png" alt="Summer Citrus">
+                    <span class="seasonal-card-tag"
+                        style="background:rgba(200,164,80,.2);color:var(--gold);border:1px solid var(--gold);">Summer</span>
+                    <div class="seasonal-card-body">
+                        <h3>The Summer Citrus Escape</h3>
+                        <p>Fresh, zesty bergamot and neroli combined with light white musk for ultimate refreshment.</p>
+                        <a href="shop.html"
+                            style="font-size:9px;letter-spacing:3px;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;transition:gap .3s;"
+                            onmouseover="this.style.gap='14px'" onmouseout="this.style.gap='8px'">
+                            Shop Now <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ NEW ARRIVALS — FULL AUTO SLIDER ══ -->
+    <section class="section" style="background:var(--ivory);">
+        <div class="container">
+            <div
+                style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--bd-light);">
+                <div>
+                    <span class="label">Just Arrived</span>
+                    <div class="gold-line gold-line-left" style="margin-top:12px;"></div>
+                    <h2 style="font-size:42px;margin-top:12px;">New Arrivals</h2>
+                </div>
+                <a href="shop.html"
+                    style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--ash);display:flex;align-items:center;gap:10px;transition:color .3s;"
+                    onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--ash)'">
+                    View All <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="smart-slider-section">
+                <button class="smart-slider-prev" id="new-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="smart-slider-wrapper">
+                    <div class="smart-slider-track" id="new-track"></div>
+                </div>
+                <button class="smart-slider-next" id="new-next"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="slider-dots" id="new-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ TESTIMONIALS ══ -->
+    <div style="background:var(--cream);padding:80px 0;overflow:hidden;">
+        <div style="display:flex;white-space:nowrap;animation:marquee 40s linear infinite;">
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;">
+                <span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"The
+                    Royal Oud Gold is unlike anything I've experienced. Truly a masterpiece."</span>
+                <span style="color:var(--gold);">✦</span>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;">
+                <span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"Alfaizam's
+                    packaging alone feels like a luxury gift. Every detail screams excellence."</span>
+                <span style="color:var(--gold);">✦</span>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;">
+                <span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"Finally
+                    a brand true to traditional scent profiles while feeling utterly modern."</span>
+                <span style="color:var(--gold);">✦</span>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;">
+                <span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"The
+                    Santal Essence has become my signature. I receive compliments daily."</span>
+                <span style="color:var(--gold);">✦</span>
+            </div>
+            <!-- duplicate -->
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;">
+                <span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"The
+                    Royal Oud Gold is unlike anything I've experienced. Truly a masterpiece."</span>
+                <span style="color:var(--gold);">✦</span>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;">
+                <span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"Alfaizam's
+                    packaging alone feels like a luxury gift. Every detail screams excellence."</span>
+                <span style="color:var(--gold);">✦</span>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;">
+                <span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"Finally
+                    a brand true to traditional scent profiles while feeling utterly modern."</span>
+                <span style="color:var(--gold);">✦</span>
+            </div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;">
+                <span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"The
+                    Santal Essence has become my signature. I receive compliments daily."</span>
+                <span style="color:var(--gold);">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ NEWSLETTER ══ -->
+    <div class="newsletter-section">
+        <div class="container">
+            <div class="text-center reveal" style="position:relative;z-index:1;">
+                <span class="label" style="margin-bottom:20px;display:block;">Private Access</span>
+                <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:rgba(244,239,230,.85);margin-bottom:14px;">
+                    Join the Inner Circle
+                </h2>
+                <p
+                    style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:40px;max-width:400px;margin-left:auto;margin-right:auto;">
+                    First access to limited editions, private events, and the art of Arabian fragrance.
+                </p>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button type="submit" class="btn btn-gold" style="white-space:nowrap;">Join Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color:rgba(244,239,230,.8);font-size:20px;"><span
+                            class="logo-gem"></span>Alfaizam</a>
+                    <p class="footer-brand-text">The ultimate destination for luxury fragrances and authentic Arabian
+                        oud. Crafting emotions since 1992.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Collections</h5>
+                    <ul>
+                        <li><a href="shop.html">Exquisite Oud</a></li>
+                        <li><a href="shop.html">Premium Attar</a></li>
+                        <li><a href="shop.html">Gift Sets</a></li>
+                        <li><a href="shop.html">Bakhoor</a></li>
+                        <li><a href="collections.html">All Collections</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Customer Care</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="why-us.html">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>The House</h5>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="journal.html">The Journal</a></li>
+                        <li><a href="why-us.html">Why Choose Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Alfaizam. All Rights Reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ══ PRODUCT DATA ══
+        const COL_PRODUCTS = [
+            { name: 'Oud Malaki', cat: 'Pure Oud', price: '$320.00', img: 'images/oud.png', badge: 'Best Seller', badgeBg: 'var(--ink)', type: ['perfume', 'attar'] },
+            { name: 'Rose Extrait', cat: 'Attar Oil', price: '$145.00', img: 'images/hero.png', badge: '', badgeBg: '', type: ['attar'] },
+            { name: 'Royal Amber', cat: 'Eau de Parfum', price: '$210.00', img: 'images/attar.png', badge: 'Limited', badgeBg: 'var(--gold)', type: ['perfume'] },
+            { name: 'The Signature Set', cat: 'Gift Sets', price: '$450.00', img: 'images/oud.png', badge: '', badgeBg: '', type: ['gifset'] },
+            { name: 'Golden Bakhoor', cat: 'Dakhoon', price: '$90.00', img: 'images/attar.png', badge: '', badgeBg: '', type: ['dakhoon'] },
+            { name: 'Velvet Agarwood', cat: 'Pure Oud', price: '$380.00', img: 'images/oud.png', badge: '', badgeBg: '', type: ['perfume'] },
+            { name: 'Taif Rose Absolute', cat: 'Attar Oil', price: '$310.00', img: 'images/hero.png', badge: 'Signature', badgeBg: '', type: ['attar'] },
+            { name: 'Heritage Blend', cat: 'Exclusive', price: '$520.00', img: 'images/attar.png', badge: '', badgeBg: '', type: ['perfume'] },
+            { name: 'Saffron Gold', cat: 'Eau de Parfum', price: '$260.00', img: 'images/oud.png', badge: 'New', badgeBg: '', type: ['perfume'] },
+            { name: 'Night Bakhoor', cat: 'Dakhoon', price: '$78.00', img: 'images/hero.png', badge: '', badgeBg: '', type: ['dakhoon'] },
+            { name: 'Imperial Musk Set', cat: 'Gift Sets', price: '$380.00', img: 'images/attar.png', badge: 'Limited', badgeBg: 'var(--gold)', type: ['gifset'] },
+            { name: 'Amber Attar', cat: 'Attar Oil', price: '$175.00', img: 'images/oud.png', badge: '', badgeBg: '', type: ['attar'] },
+        ];
+
+        const NEW_ARRIVALS = [
+            { name: 'Midnight Bloom', cat: 'Eau de Parfum', price: '$195.00', img: 'images/hero.png', badge: 'New', badgeBg: '' },
+            { name: 'Sandalwood Reserve', cat: 'Woody', price: '$220.00', img: 'images/attar.png', badge: 'New', badgeBg: '' },
+            { name: 'Citrus Bloom', cat: 'Fresh Floral', price: '$130.00', img: 'images/oud.png', badge: 'New', badgeBg: '' },
+            { name: 'Arabian Cedar', cat: 'Woody', price: '$190.00', img: 'images/attar.png', badge: 'New', badgeBg: '' },
+            { name: 'Cashmere Musk', cat: 'Eau de Parfum', price: '$230.00', img: 'images/hero.png', badge: 'New', badgeBg: '' },
+            { name: 'Majestic Cardamom', cat: 'Spicy & Warm', price: '$195.00', img: 'images/oud.png', badge: 'New', badgeBg: '' },
+            { name: 'Nightfall Attar', cat: 'Attar Oil', price: '$165.00', img: 'images/attar.png', badge: 'New', badgeBg: '' },
+        ];
+
+        // ══ CARD BUILDER ══
+        function buildCard(p) {
+            const badgeHtml = p.badge ? `<span class="prod-badge" style="${p.badgeBg ? 'background:' + p.badgeBg + ';color:' + (p.badgeBg === 'var(--gold)' ? 'var(--ink)' : 'white') + ';' : ''}">${p.badge}</span>` : '';
+            return `
+        <div class="product-card reveal">
+            <div class="prod-img">
+                <img src="${p.img}" alt="${p.name}" loading="lazy">
+                ${badgeHtml}
+                <div class="prod-hover"><div class="prod-hover-action">
+                    <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                </div></div>
+                <button class="prod-wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="prod-info">
+                <p class="prod-cat">${p.cat}</p>
+                <h3 class="prod-name"><a href="product.html">${p.name}</a></h3>
+                <p class="prod-price">${p.price}</p>
+            </div>
+        </div>`;
+        }
+
+        // ══ SMART SLIDER CLASS ══
+        class SmartSlider {
+            constructor({ trackEl, prevBtn, nextBtn, dotsEl, products, autoplay = true, autoDelay = 3800 }) {
+                this.track = trackEl; this.prev = prevBtn; this.next = nextBtn;
+                this.dotsEl = dotsEl; this.products = products;
+                this.autoplay = autoplay; this.autoDelay = autoDelay;
+                this.current = 0; this.perView = 5; this.timer = null;
+                this.init();
+            }
+            getPerView() {
+                const w = window.innerWidth;
+                if (w <= 480) return 1.2;
+                if (w <= 576) return 2;
+                if (w <= 768) return 2;
+                if (w <= 992) return 3;
+                if (w <= 1200) return 4;
+                return 5;
+            }
+            totalSlides() { return Math.max(0, this.products.length - Math.floor(this.perView)); }
+            render() { this.track.innerHTML = this.products.map(p => buildCard(p)).join(''); this.resize(); }
+            resize() {
+                this.perView = this.getPerView();
+                const cardW = 100 / this.perView;
+                Array.from(this.track.children).forEach(c => {
+                    c.style.width = `calc(${cardW}% - 16px)`;
+                    c.style.marginRight = '20px';
+                    c.style.flexShrink = '0';
+                });
+                this.current = Math.min(this.current, this.totalSlides());
+                this.go(this.current, false);
+                this.buildDots();
+            }
+            go(idx, animate = true) {
+                this.current = Math.max(0, Math.min(idx, this.totalSlides()));
+                if (!animate) this.track.style.transition = 'none';
+                else this.track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+                const cardW = this.track.children[0]?.offsetWidth || 0;
+                this.track.style.transform = `translateX(-${this.current * (cardW + 20)}px)`;
+                this.updateControls(); this.updateDots();
+                if (!animate) setTimeout(() => this.track.style.transition = '', 50);
+            }
+            buildDots() {
+                if (!this.dotsEl) return;
+                const total = this.totalSlides() + 1;
+                if (total <= 1) { this.dotsEl.innerHTML = ''; return; }
+                this.dotsEl.innerHTML = Array.from({ length: total }, (_, i) =>
+                    `<div class="slider-dot ${i === this.current ? 'active' : ''}" data-idx="${i}"></div>`).join('');
+                this.dotsEl.querySelectorAll('.slider-dot').forEach(d => {
+                    d.addEventListener('click', () => { this.go(+d.dataset.idx); this.resetAuto(); });
+                });
+            }
+            updateDots() {
+                if (!this.dotsEl) return;
+                this.dotsEl.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === this.current));
+            }
+            updateControls() {
+                this.prev?.classList.toggle('hidden', this.current === 0);
+                this.next?.classList.toggle('hidden', this.current >= this.totalSlides());
+            }
+            startAuto() {
+                if (!this.autoplay) return;
+                this.timer = setInterval(() => {
+                    this.go(this.current >= this.totalSlides() ? 0 : this.current + 1);
+                }, this.autoDelay);
+            }
+            resetAuto() { clearInterval(this.timer); this.startAuto(); }
+            bindEvents() {
+                this.prev?.addEventListener('click', () => { this.go(this.current - 1); this.resetAuto(); });
+                this.next?.addEventListener('click', () => { this.go(this.current + 1); this.resetAuto(); });
+                window.addEventListener('resize', () => this.resize());
+                let sx = 0;
+                this.track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+                this.track.addEventListener('touchend', e => {
+                    const d = sx - e.changedTouches[0].clientX;
+                    if (Math.abs(d) > 50) { this.go(this.current + (d > 0 ? 1 : -1)); this.resetAuto(); }
+                });
+            }
+            init() { this.render(); this.bindEvents(); this.startAuto(); setTimeout(doReveal, 100); }
+        }
+
+        // ══ FILTER LOGIC ══
+        const THRESHOLD = 5;
+        let colSlider = null;
+
+        function renderColSection(filter) {
+            const products = filter === 'all' ? COL_PRODUCTS : COL_PRODUCTS.filter(p => p.type.includes(filter));
+            const grid = document.getElementById('col-grid');
+            const sliderSec = document.getElementById('col-slider-section');
+            if (products.length === 0) {
+                grid.style.display = 'grid'; sliderSec.style.display = 'none';
+                grid.innerHTML = `<div style="text-align:center;padding:60px;color:var(--ash);font-family:'Cormorant Garamond',serif;font-size:22px;grid-column:1/-1;">No products found.</div>`;
+                return;
+            }
+            if (products.length <= THRESHOLD) {
+                sliderSec.style.display = 'none'; grid.style.display = 'grid';
+                grid.className = `product-grid-auto count-${Math.min(products.length, 5)}`;
+                grid.innerHTML = products.map(p => buildCard(p)).join('');
+                if (colSlider) { clearInterval(colSlider.timer); colSlider = null; }
+                setTimeout(doReveal, 100);
+            } else {
+                grid.style.display = 'none'; sliderSec.style.display = 'block';
+                if (colSlider) { clearInterval(colSlider.timer); colSlider = null; }
+                colSlider = new SmartSlider({
+                    trackEl: document.getElementById('col-track'),
+                    prevBtn: document.getElementById('col-prev'),
+                    nextBtn: document.getElementById('col-next'),
+                    dotsEl: document.getElementById('col-dots'),
+                    products, autoplay: true, autoDelay: 4000,
+                });
+            }
+        }
+
+        document.getElementById('col-tabs').addEventListener('click', e => {
+            const btn = e.target.closest('.ftab');
+            if (!btn) return;
+            document.querySelectorAll('#col-tabs .ftab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            renderColSection(btn.dataset.filter);
+        });
+
+        // ══ INIT ══
+        renderColSection('all');
+
+        new SmartSlider({
+            trackEl: document.getElementById('new-track'),
+            prevBtn: document.getElementById('new-prev'),
+            nextBtn: document.getElementById('new-next'),
+            dotsEl: document.getElementById('new-dots'),
+            products: NEW_ARRIVALS, autoplay: true, autoDelay: 3600,
+        });
+
+        // ══ SHARED UI ══
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 80);
+        }, { passive: true });
+
+        function doReveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('visible');
+            });
+        }
+        window.addEventListener('scroll', doReveal, { passive: true });
+        doReveal();
+
+        document.getElementById('search-btn').addEventListener('click', () => {
+            document.getElementById('search-overlay').classList.add('open');
+            setTimeout(() => document.getElementById('search-field').focus(), 300);
+        });
+        document.getElementById('search-close').addEventListener('click', () => document.getElementById('search-overlay').classList.remove('open'));
+        document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-nav').classList.add('open'));
+        document.getElementById('mobile-close').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.getElementById('search-overlay').classList.remove('open');
+                document.getElementById('mobile-nav').classList.remove('open');
+            }
+        });
+    </script>
+</body>
+
+</html>

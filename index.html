@@ -1,0 +1,1292 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ALFAIZAM — Luxury Arabian Fragrances</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── Hero ── */
+        .hero {
+            height: 100vh;
+            min-height: 700px;
+            background: var(--ink);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('images/hero.png');
+            background-size: cover;
+            background-position: center;
+            opacity: .22;
+            transition: transform 8s ease;
+        }
+
+        .hero-vignette {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 120% 80% at 50% 110%, rgba(13, 12, 11, .9) 0%, transparent 60%),
+                linear-gradient(to bottom, rgba(13, 12, 11, .5) 0%, rgba(13, 12, 11, .15) 40%, rgba(13, 12, 11, .7) 100%);
+        }
+
+        .hero-ornament {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            pointer-events: none;
+        }
+
+        .hero-ornament-ring {
+            width: 65vmin;
+            height: 65vmin;
+            border: 1px solid rgba(200, 164, 80, .12);
+            border-radius: 50%;
+            position: absolute;
+            animation: ring-pulse 6s ease-in-out infinite;
+        }
+
+        .hero-ornament-ring:nth-child(2) {
+            width: 80vmin;
+            height: 80vmin;
+            border-color: rgba(200, 164, 80, .06);
+            animation-delay: 2s;
+        }
+
+        @keyframes ring-pulse {
+
+            0%,
+            100% {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.02);
+            }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 0 24px;
+        }
+
+        .hero-eyebrow {
+            font-size: 9px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--gold-pale);
+            opacity: 0;
+            animation: fadeInUp .9s forwards .4s;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .hero-eyebrow::before,
+        .hero-eyebrow::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--bd-gold);
+        }
+
+        .hero-headline {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(72px, 10vw, 140px);
+            font-weight: 300;
+            line-height: .92;
+            letter-spacing: -.02em;
+            opacity: 0;
+            animation: fadeInUp .9s forwards .65s;
+            margin-bottom: 24px;
+        }
+
+        .hero-headline em {
+            font-style: italic;
+            color: rgba(232, 213, 160, .85);
+            display: block;
+        }
+
+        .hero-sub {
+            font-size: 12px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .45);
+            opacity: 0;
+            animation: fadeInUp .9s forwards .85s;
+            margin-bottom: 48px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp .9s forwards 1.05s;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 1.6s;
+        }
+
+        .hero-scroll span {
+            font-size: 8px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, .3);
+        }
+
+        .scroll-line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--gold), transparent);
+            animation: scroll-drip 2.2s ease-in-out infinite;
+        }
+
+        @keyframes scroll-drip {
+            0% {
+                transform: scaleY(0);
+                transform-origin: top;
+                opacity: 1;
+            }
+
+            50% {
+                transform: scaleY(1);
+                transform-origin: top;
+                opacity: 1;
+            }
+
+            51% {
+                transform-origin: bottom;
+            }
+
+            100% {
+                transform: scaleY(0);
+                transform-origin: bottom;
+                opacity: 0;
+            }
+        }
+
+        /* ── Featured header ── */
+        .featured-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            margin-bottom: 40px;
+            padding-bottom: 28px;
+            border-bottom: 1px solid var(--bd-light);
+        }
+
+        /* ── Brand Statement ── */
+        .brand-statement {
+            background: var(--ink);
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .brand-statement::before {
+            content: 'ALFAIZAM';
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22vw;
+            font-weight: 300;
+            color: rgba(255, 255, 255, .025);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            white-space: nowrap;
+            pointer-events: none;
+            letter-spacing: .05em;
+        }
+
+        .brand-quote {
+            max-width: 880px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            padding: 0 40px;
+        }
+
+        .brand-quote blockquote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(28px, 4vw, 48px);
+            font-weight: 300;
+            font-style: italic;
+            color: rgba(244, 239, 230, .8);
+            line-height: 1.4;
+            margin-bottom: 32px;
+        }
+
+        .brand-quote cite {
+            font-size: 9px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            font-style: normal;
+        }
+
+        /* ── Testimonials ── */
+        .testi-strip {
+            background: var(--cream);
+            padding: 80px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .testi-track {
+            display: flex;
+            white-space: nowrap;
+            animation: marquee 40s linear infinite;
+        }
+
+        .testi-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 32px;
+            padding: 0 60px;
+        }
+
+        .testi-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 18px;
+            font-style: italic;
+            color: var(--charcoal);
+        }
+
+        .testi-sep {
+            color: var(--gold);
+            font-size: 18px;
+        }
+
+        /* ── Smart Slider System ── */
+        .smart-slider-section {
+            position: relative;
+        }
+
+        .smart-slider-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .smart-slider-track {
+            display: flex;
+            transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+            gap: 0;
+        }
+
+        .smart-slider-track .product-card {
+            flex-shrink: 0;
+        }
+
+        /* Slider Controls */
+        .smart-slider-prev,
+        .smart-slider-next {
+            position: absolute;
+            top: 38%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: white;
+            color: var(--ink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+            z-index: 10;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .smart-slider-prev:hover,
+        .smart-slider-next:hover {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 6px 28px rgba(200, 164, 80, 0.4);
+        }
+
+        .smart-slider-prev {
+            left: 12px;
+        }
+
+        .smart-slider-next {
+            right: 12px;
+        }
+
+        .smart-slider-prev.hidden,
+        .smart-slider-next.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Slider dots */
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 32px;
+        }
+
+        .slider-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--bd-light);
+            border: 1px solid var(--ash);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slider-dot.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            width: 24px;
+            border-radius: 3px;
+        }
+
+        /* ── Filter Tabs improved ── */
+        .filter-tabs-wrap {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 48px;
+            flex-wrap: wrap;
+        }
+
+        .ftab {
+            font-family: 'Jost', sans-serif;
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--ash);
+            padding: 10px 22px;
+            border: 1px solid var(--bd-light);
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .ftab:hover {
+            color: var(--ink);
+            border-color: var(--charcoal);
+        }
+
+        .ftab.active {
+            background: var(--ink);
+            color: var(--cream);
+            border-color: var(--ink);
+        }
+
+        /* ── Product Grid (static, ≤5 items) ── */
+        .product-grid-auto {
+            display: grid;
+            gap: 20px;
+        }
+
+        .product-grid-auto.count-1 {
+            grid-template-columns: repeat(1, 1fr);
+            max-width: 340px;
+            margin: 0 auto;
+        }
+
+        .product-grid-auto.count-2 {
+            grid-template-columns: repeat(2, 1fr);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .product-grid-auto.count-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .product-grid-auto.count-4 {
+            grid-template-columns: repeat(4, 1fr);
+        }
+
+        .product-grid-auto.count-5 {
+            grid-template-columns: repeat(5, 1fr);
+        }
+
+        @media (max-width: 1200px) {
+            .product-grid-auto.count-5 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .product-grid-auto.count-4 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 900px) {
+
+            .product-grid-auto.count-3,
+            .product-grid-auto.count-4,
+            .product-grid-auto.count-5 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .product-grid-auto {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 12px;
+            }
+
+            .product-grid-auto.count-1 {
+                grid-template-columns: 1fr !important;
+            }
+        }
+
+        /* Hide/show filtered items */
+        .product-card.filtered-out {
+            display: none;
+        }
+
+        /* ── No results message ── */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--ash);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            display: none;
+            grid-column: 1 / -1;
+        }
+
+        @media (max-width: 768px) {
+            .hero-actions {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Announcement Bar -->
+    <div class="announcement-bar">
+        <div class="marquee-track">
+            <span class="marquee-item">Complimentary Worldwide Shipping <span class="dot"></span></span>
+            <span class="marquee-item">100% Authentic Arabian Oud <span class="dot"></span></span>
+            <span class="marquee-item">Extrait de Parfum — 12 Hour Longevity <span class="dot"></span></span>
+            <span class="marquee-item">Hand-Crafted by Master Perfumers Since 1992 <span class="dot"></span></span>
+            <span class="marquee-item">Complimentary Worldwide Shipping <span class="dot"></span></span>
+            <span class="marquee-item">100% Authentic Arabian Oud <span class="dot"></span></span>
+            <span class="marquee-item">Extrait de Parfum — 12 Hour Longevity <span class="dot"></span></span>
+            <span class="marquee-item">Hand-Crafted by Master Perfumers Since 1992 <span class="dot"></span></span>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header class="site-header" id="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div style="display:flex;align-items:center;gap:18px;">
+                    <div class="hamburger" id="hamburger">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <a href="index.html" class="logo">
+                        <span class="logo-gem"></span>Alfaizam
+                    </a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="collections.html">Collections</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <button id="search-btn" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <a href="wishlist.html" class="hide-mobile" aria-label="Wishlist"><i
+                            class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html" style="position:relative;" aria-label="Cart">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-badge" id="cart-count">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Nav -->
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mobile-close" id="mobile-close"><i class="fa-solid fa-xmark"></i></button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-footer">
+            <a href="wishlist.html">Wishlist</a>
+            <a href="cart.html">Bag</a>
+        </div>
+    </nav>
+
+    <!-- Search Overlay -->
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close-btn" id="search-close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="search-body">
+            <span class="search-label">Search Our Collection</span>
+            <input type="text" class="search-field" placeholder="Oud, Attar, Rose…" id="search-field">
+            <div class="search-hints">
+                <span class="search-hint">Royal Oud</span>
+                <span class="search-hint">Santal</span>
+                <span class="search-hint">Gift Sets</span>
+                <span class="search-hint">Bakhoor</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ HERO ══ -->
+    <section class="hero">
+        <div class="hero-bg" id="hero-bg"></div>
+        <div class="hero-vignette"></div>
+        <div class="hero-ornament">
+            <div class="hero-ornament-ring"></div>
+            <div class="hero-ornament-ring"></div>
+        </div>
+        <div class="hero-content">
+            <p class="hero-eyebrow">Est. 1992 — Dubai</p>
+            <h1 class="hero-headline">
+                Liquid<em>Royalty</em>
+            </h1>
+            <p class="hero-sub">The Essence of Arabian Heritage</p>
+            <div class="hero-actions">
+                <a href="shop.html" class="btn btn-gold">Explore the Collection</a>
+                <a href="about.html" class="btn btn-outline-light">Our Story</a>
+            </div>
+        </div>
+        <div class="hero-scroll">
+            <span>Discover</span>
+            <div class="scroll-line"></div>
+        </div>
+    </section>
+
+    <!-- ══ OFFERS MARQUEE ══ -->
+    <div class="announcement-bar"
+        style="background: var(--gold); color: var(--ink); border-bottom: none; padding: 12px 0;">
+        <div class="marquee-track" style="animation-duration: 25s;">
+            <span class="marquee-item" style="font-weight: 500; letter-spacing: 2px; color: var(--ink);">Use Code
+                ROYAL20 for 20% Off <span class="dot" style="background: var(--ink);"></span></span>
+            <span class="marquee-item" style="font-weight: 500; letter-spacing: 2px; color: var(--ink);">Complimentary
+                Gift With Orders Over $200 <span class="dot" style="background: var(--ink);"></span></span>
+            <span class="marquee-item" style="font-weight: 500; letter-spacing: 2px; color: var(--ink);">Free Express
+                Worldwide Shipping <span class="dot" style="background: var(--ink);"></span></span>
+            <span class="marquee-item" style="font-weight: 500; letter-spacing: 2px; color: var(--ink);">Use Code
+                ROYAL20 for 20% Off <span class="dot" style="background: var(--ink);"></span></span>
+            <span class="marquee-item" style="font-weight: 500; letter-spacing: 2px; color: var(--ink);">Complimentary
+                Gift With Orders Over $200 <span class="dot" style="background: var(--ink);"></span></span>
+            <span class="marquee-item" style="font-weight: 500; letter-spacing: 2px; color: var(--ink);">Free Express
+                Worldwide Shipping <span class="dot" style="background: var(--ink);"></span></span>
+        </div>
+    </div>
+
+    <!-- ══ FEATURED PRODUCTS — AUTO SLIDER ══ -->
+    <section class="section" style="background: var(--ivory); padding-bottom: 80px;">
+        <div class="container">
+            <div class="featured-header">
+                <div>
+                    <span class="label">New Season</span>
+                    <div class="gold-line gold-line-left" style="margin-top:12px;"></div>
+                    <h2 style="font-size:42px;margin-top:12px;">Featured Fragrances</h2>
+                </div>
+                <a href="shop.html"
+                    style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--ash);display:flex;align-items:center;gap:10px;transition:color .3s;"
+                    onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--ash)'">
+                    View All <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="container" style="padding-top:0; position:relative;">
+            <div class="smart-slider-section" id="featured-section">
+                <button class="smart-slider-prev" id="feat-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="smart-slider-wrapper" id="feat-wrapper">
+                    <div class="smart-slider-track" id="feat-track">
+                        <!-- Cards injected by JS -->
+                    </div>
+                </div>
+                <button class="smart-slider-next" id="feat-next"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="slider-dots" id="feat-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ BRAND PILLARS ══ -->
+    <section style="background: var(--ink); color: white; padding: 80px 0;">
+        <div class="container">
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 40px; text-align: center;">
+                <div class="reveal">
+                    <i class="fa-solid fa-truck-fast"
+                        style="font-size: 36px; color: var(--gold); margin-bottom: 24px;"></i>
+                    <h4
+                        style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 12px; color: rgba(244,239,230,.9);">
+                        Global Delivery</h4>
+                    <p style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7;">Complimentary express
+                        shipping worldwide on all signature orders.</p>
+                </div>
+                <div class="reveal d1">
+                    <i class="fa-solid fa-shield-halved"
+                        style="font-size: 36px; color: var(--gold); margin-bottom: 24px;"></i>
+                    <h4
+                        style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 12px; color: rgba(244,239,230,.9);">
+                        100% Authentic</h4>
+                    <p style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7;">Original, pure
+                        formulations directly from our master perfumers.</p>
+                </div>
+                <div class="reveal d2">
+                    <i class="fa-solid fa-box-open"
+                        style="font-size: 36px; color: var(--gold); margin-bottom: 24px;"></i>
+                    <h4
+                        style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 12px; color: rgba(244,239,230,.9);">
+                        Luxury Unboxing</h4>
+                    <p style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7;">Every bottle is encased
+                        in a velvet-lined, hand-finished bespoke box.</p>
+                </div>
+                <div class="reveal d3">
+                    <i class="fa-solid fa-arrow-rotate-left"
+                        style="font-size: 36px; color: var(--gold); margin-bottom: 24px;"></i>
+                    <h4
+                        style="font-family: 'Cormorant Garamond', serif; font-size: 26px; font-weight: 400; margin-bottom: 12px; color: rgba(244,239,230,.9);">
+                        Client Care</h4>
+                    <p style="font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.7;">Dedicated 24/7
+                        concierge support and hassle-free returns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ CURATED DISCOVERIES — FILTER + SMART GRID/SLIDER ══ -->
+    <section class="section" style="background: var(--ivory);">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom: 40px;">
+                <span class="label">Curated Discoveries</span>
+                <div class="gold-line gold-line-center" style="margin-top:14px;"></div>
+                <h2 style="font-size:42px;margin-top:16px;">Shop by Notes</h2>
+            </div>
+
+            <!-- Filter Tabs -->
+            <div class="filter-tabs-wrap reveal" id="note-tabs">
+                <button class="ftab active" data-filter="all">All Notes</button>
+                <button class="ftab" data-filter="oud">Pure Oud</button>
+                <button class="ftab" data-filter="floral">Floral & Sweet</button>
+                <button class="ftab" data-filter="musk">Musk & Amber</button>
+                <button class="ftab" data-filter="spicy">Spicy & Woody</button>
+            </div>
+
+            <!-- Smart Product Grid (auto switches to slider when >5 visible) -->
+            <div id="note-container">
+                <!-- Grid mode container -->
+                <div class="product-grid-auto" id="note-grid">
+                    <!-- js renders cards -->
+                </div>
+                <!-- Slider mode container (hidden initially) -->
+                <div class="smart-slider-section" id="note-slider-section" style="display:none;">
+                    <button class="smart-slider-prev" id="note-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                    <div class="smart-slider-wrapper" id="note-wrapper">
+                        <div class="smart-slider-track" id="note-track"></div>
+                    </div>
+                    <button class="smart-slider-next" id="note-next"><i class="fa-solid fa-chevron-right"></i></button>
+                    <div class="slider-dots" id="note-dots"></div>
+                </div>
+            </div>
+
+            <div class="text-center reveal" style="margin-top: 48px;">
+                <a href="shop.html" class="btn btn-dark">View Full Collection</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ BRAND STATEMENT ══ -->
+    <div class="brand-statement">
+        <div class="brand-quote reveal">
+            <span class="label" style="margin-bottom:24px;display:block;">The Alfaizam Philosophy</span>
+            <div class="gold-line gold-line-center"></div>
+            <blockquote style="margin-top:28px;">
+                "Fragrance is the most intimate form of expression — a silent signature that introduces you before you
+                speak and lingers long after you have left."
+            </blockquote>
+            <cite>The House of Alfaizam</cite>
+        </div>
+    </div>
+
+    <!-- ══ CATEGORIES (BENTO GRID) ══ -->
+    <section class="section" style="background: var(--cream);">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom:48px;">
+                <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:42px;font-weight:400;letter-spacing:1px;text-transform:uppercase;">
+                    CATEGORIES</h2>
+                <div class="gold-line gold-line-center" style="margin-top:14px;width:120px;"></div>
+            </div>
+
+            <div class="cat-bento-grid">
+                <div class="cat-col">
+                    <a href="shop.html" class="cat-card cat-tall reveal">
+                        <img src="images/hero.png" alt="Perfume">
+                        <div class="cat-content">
+                            <h3>Perfume</h3>
+                            <p>Connoisseurs of perfumery —<br>heritage, held in a bottle.</p>
+                        </div>
+                    </a>
+                    <a href="shop.html" class="cat-card cat-short reveal d1">
+                        <img src="images/oud.png" alt="Gift set">
+                        <div class="cat-content">
+                            <h3>Gift set</h3>
+                            <p>Thoughtfully wrapped —<br>the fragrance of memories.</p>
+                        </div>
+                    </a>
+                </div>
+                <div class="cat-col">
+                    <a href="shop.html" class="cat-card cat-short reveal d2">
+                        <img src="images/attar.png" alt="Attar">
+                        <div class="cat-content">
+                            <h3>Attar</h3>
+                            <p>Rich fragrant oils —<br>a timeless touch of tradition.</p>
+                        </div>
+                    </a>
+                    <a href="shop.html" class="cat-card cat-tall reveal d3">
+                        <img src="images/oud.png" alt="Dakhoon">
+                        <div class="cat-content">
+                            <h3>Dakhoon</h3>
+                            <p>Aromas of royalty —<br>incense that calms.</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ TESTIMONIAL MARQUEE ══ -->
+    <div class="testi-strip">
+        <div class="testi-track">
+            <div class="testi-item">
+                <span class="testi-quote">"The Royal Oud Gold is unlike anything I've experienced. Truly a
+                    masterpiece."</span>
+                <span class="testi-sep">✦</span>
+            </div>
+            <div class="testi-item">
+                <span class="testi-quote">"Alfaizam's packaging alone feels like a luxury gift. Every detail screams
+                    excellence."</span>
+                <span class="testi-sep">✦</span>
+            </div>
+            <div class="testi-item">
+                <span class="testi-quote">"Finally a brand true to traditional scent profiles while feeling utterly
+                    modern."</span>
+                <span class="testi-sep">✦</span>
+            </div>
+            <div class="testi-item">
+                <span class="testi-quote">"The Santal Essence has become my signature. I receive compliments
+                    daily."</span>
+                <span class="testi-sep">✦</span>
+            </div>
+            <div class="testi-item">
+                <span class="testi-quote">"The Royal Oud Gold is unlike anything I've experienced. Truly a
+                    masterpiece."</span>
+                <span class="testi-sep">✦</span>
+            </div>
+            <div class="testi-item">
+                <span class="testi-quote">"Alfaizam's packaging alone feels like a luxury gift. Every detail screams
+                    excellence."</span>
+                <span class="testi-sep">✦</span>
+            </div>
+            <div class="testi-item">
+                <span class="testi-quote">"Finally a brand true to traditional scent profiles while feeling utterly
+                    modern."</span>
+                <span class="testi-sep">✦</span>
+            </div>
+            <div class="testi-item">
+                <span class="testi-quote">"The Santal Essence has become my signature. I receive compliments
+                    daily."</span>
+                <span class="testi-sep">✦</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ ALSO LOVED — AUTO SLIDER ══ -->
+    <section class="section" style="background: var(--ivory);">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom:48px;">
+                <span class="label">Explore Further</span>
+                <div class="gold-line gold-line-center" style="margin-top:14px;"></div>
+                <h2 style="font-size:48px;margin-top:16px;">Also Loved</h2>
+            </div>
+
+            <div class="smart-slider-section">
+                <button class="smart-slider-prev" id="also-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="smart-slider-wrapper" id="also-wrapper">
+                    <div class="smart-slider-track" id="also-track"></div>
+                </div>
+                <button class="smart-slider-next" id="also-next"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="slider-dots" id="also-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ NEWSLETTER ══ -->
+    <div class="newsletter-section">
+        <div class="container">
+            <div class="text-center reveal" style="position:relative;z-index:1;">
+                <span class="label" style="margin-bottom:20px;display:block;">Private Access</span>
+                <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:rgba(244,239,230,.85);margin-bottom:14px;">
+                    Join the Inner Circle
+                </h2>
+                <p
+                    style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:40px;max-width:400px;margin-left:auto;margin-right:auto;">
+                    First access to limited editions, private events, and the art of Arabian fragrance.
+                </p>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button type="submit" class="btn btn-gold" style="white-space:nowrap;">Join Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color:rgba(244,239,230,.8);font-size:20px;">
+                        <span class="logo-gem"></span>Alfaizam
+                    </a>
+                    <p class="footer-brand-text">The ultimate destination for luxury fragrances and authentic Arabian
+                        oud. Crafting emotions since 1992.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Collections</h5>
+                    <ul>
+                        <li><a href="shop.html">Exquisite Oud</a></li>
+                        <li><a href="shop.html">Premium Attar</a></li>
+                        <li><a href="shop.html">Gift Sets</a></li>
+                        <li><a href="shop.html">Bakhoor</a></li>
+                        <li><a href="collections.html">All Collections</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Customer Care</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="why-us.html">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                        <li><a href="wishlist.html">Wishlist</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>The House</h5>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="journal.html">The Journal</a></li>
+                        <li><a href="why-us.html">Why Choose Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Alfaizam. All Rights Reserved.</p>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ═══════════════════════════════════════════════
+        //  PRODUCT DATA
+        // ═══════════════════════════════════════════════
+        const FEATURED_PRODUCTS = [
+            { name: 'Royal Oud Gold', cat: 'Pure Oud', price: '$280.00', img: 'images/oud.png', badge: 'Bestseller', badgeBg: '' },
+            { name: 'Santal Essence', cat: 'Attar Oil', price: '$120.00', img: 'images/attar.png', badge: '', badgeBg: '' },
+            { name: 'Midnight Bloom', cat: 'Eau de Parfum', price: '$195.00', img: 'images/hero.png', badge: 'New', badgeBg: '' },
+            { name: 'Desert Rose', cat: 'Oriental', price: '$210.00', img: 'images/oud.png', badge: '', badgeBg: '' },
+            { name: 'Amber Musk', cat: 'Fragrance Oil', price: '$85.00', img: 'images/attar.png', badge: '', badgeBg: '' },
+            { name: 'Golden Dust', cat: 'Bakhoor', price: '$65.00', img: 'images/hero.png', badge: '', badgeBg: '' },
+            { name: 'Imperial Amber', cat: 'Eau de Parfum', price: '$230.00', img: 'images/oud.png', badge: 'Signature', badgeBg: '' },
+            { name: 'Velvet Agarwood', cat: 'Pure Oud', price: '$380.00', img: 'images/attar.png', badge: '', badgeBg: '' },
+        ];
+
+        const NOTE_PRODUCTS = [
+            { name: 'Oud Malaki', cat: 'Pure Oud', price: '$320.00', img: 'images/oud.png', badge: 'Signature', badgeBg: '', notes: ['oud'] },
+            { name: 'Rose Extrait', cat: 'Attar Oil', price: '$145.00', img: 'images/hero.png', badge: '', badgeBg: '', notes: ['floral'] },
+            { name: 'Royal Amber', cat: 'Eau de Parfum', price: '$210.00', img: 'images/attar.png', badge: 'Bestseller', badgeBg: 'var(--ink)', notes: ['musk'] },
+            { name: 'Jasmine Musk', cat: 'Fragrance Oil', price: '$180.00', img: 'images/hero.png', badge: '', badgeBg: '', notes: ['floral', 'musk'] },
+            { name: 'Velvet Agarwood', cat: 'Pure Oud', price: '$380.00', img: 'images/oud.png', badge: '', badgeBg: '', notes: ['oud', 'spicy'] },
+            { name: 'Saffron Gold', cat: 'Eau de Parfum', price: '$260.00', img: 'images/attar.png', badge: 'Limited', badgeBg: 'var(--gold)', notes: ['spicy'] },
+            { name: 'Imperial Musk', cat: 'Attar Oil', price: '$150.00', img: 'images/hero.png', badge: '', badgeBg: '', notes: ['musk'] },
+            { name: 'Desert Rose', cat: 'Eau de Parfum', price: '$185.00', img: 'images/oud.png', badge: '', badgeBg: '', notes: ['floral'] },
+            { name: 'Sandalwood Reserve', cat: 'Woody', price: '$220.00', img: 'images/attar.png', badge: 'New', badgeBg: '', notes: ['spicy'] },
+            { name: 'Golden Bakhoor', cat: 'Incense', price: '$90.00', img: 'images/oud.png', badge: '', badgeBg: '', notes: ['oud'] },
+            { name: 'Nightfall Attar', cat: 'Attar Oil', price: '$165.00', img: 'images/hero.png', badge: '', badgeBg: '', notes: ['musk'] },
+            { name: 'White Lily Essence', cat: 'Floral', price: '$140.00', img: 'images/attar.png', badge: '', badgeBg: '', notes: ['floral'] },
+            { name: 'Majestic Cardamom', cat: 'Spicy & Warm', price: '$195.00', img: 'images/oud.png', badge: '', badgeBg: '', notes: ['spicy'] },
+            { name: 'Oud Supreme', cat: 'Pure Oud', price: '$450.00', img: 'images/hero.png', badge: 'Bestseller', badgeBg: 'var(--ink)', notes: ['oud'] },
+            { name: 'Cashmere Musk', cat: 'Eau de Parfum', price: '$230.00', img: 'images/attar.png', badge: '', badgeBg: '', notes: ['musk'] },
+            { name: 'Taif Rose Absolute', cat: 'Attar Oil', price: '$310.00', img: 'images/oud.png', badge: 'Signature', badgeBg: '', notes: ['floral'] },
+            { name: 'Midnight Spices', cat: 'Oriental Spicy', price: '$205.00', img: 'images/attar.png', badge: '', badgeBg: '', notes: ['spicy'] },
+            { name: 'Heritage Blend', cat: 'Exclusive Blend', price: '$520.00', img: 'images/hero.png', badge: '', badgeBg: '', notes: ['oud', 'musk'] },
+            { name: 'Citrus Bloom', cat: 'Fresh Floral', price: '$130.00', img: 'images/oud.png', badge: '', badgeBg: '', notes: ['floral'] },
+            { name: 'Arabian Cedar', cat: 'Woody', price: '$190.00', img: 'images/attar.png', badge: '', badgeBg: '', notes: ['spicy'] },
+        ];
+
+        const ALSO_LOVED = [
+            { name: 'Desert Rose', cat: 'Oriental', price: '$210.00', img: 'images/oud.png', badge: '', badgeBg: '' },
+            { name: 'Amber Musk', cat: 'Fragrance Oil', price: '$85.00', img: 'images/attar.png', badge: '', badgeBg: '' },
+            { name: 'Golden Dust', cat: 'Bakhoor', price: '$65.00', img: 'images/hero.png', badge: '', badgeBg: '' },
+            { name: 'Royal Oud Gold', cat: 'Pure Oud', price: '$280.00', img: 'images/oud.png', badge: 'Bestseller', badgeBg: '' },
+            { name: 'Santal Essence', cat: 'Attar Oil', price: '$120.00', img: 'images/attar.png', badge: '', badgeBg: '' },
+            { name: 'Midnight Bloom', cat: 'Eau de Parfum', price: '$195.00', img: 'images/hero.png', badge: 'New', badgeBg: '' },
+            { name: 'Oud Supreme', cat: 'Pure Oud', price: '$450.00', img: 'images/oud.png', badge: 'Signature', badgeBg: '' },
+        ];
+
+        // ═══════════════════════════════════════════════
+        //  CARD BUILDER
+        // ═══════════════════════════════════════════════
+        function buildCard(p, extraStyle = '') {
+            const badgeHtml = p.badge
+                ? `<span class="prod-badge" style="${p.badgeBg ? 'background:' + p.badgeBg + ';color:' + (p.badgeBg === 'var(--gold)' ? 'var(--ink)' : 'white') + ';' : ''}">${p.badge}</span>`
+                : '';
+            return `
+        <div class="product-card reveal" style="${extraStyle}">
+            <div class="prod-img">
+                <img src="${p.img}" alt="${p.name}" loading="lazy">
+                ${badgeHtml}
+                <div class="prod-hover">
+                    <div class="prod-hover-action">
+                        <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                    </div>
+                </div>
+                <button class="prod-wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="prod-info">
+                <p class="prod-cat">${p.cat}</p>
+                <h3 class="prod-name"><a href="product.html">${p.name}</a></h3>
+                <p class="prod-price">${p.price}</p>
+            </div>
+        </div>`;
+        }
+
+        // ═══════════════════════════════════════════════
+        //  SMART SLIDER CLASS
+        // ═══════════════════════════════════════════════
+        class SmartSlider {
+            constructor({ trackEl, prevBtn, nextBtn, dotsEl, products, autoplay = true, autoDelay = 3500 }) {
+                this.track = trackEl;
+                this.prev = prevBtn;
+                this.next = nextBtn;
+                this.dotsEl = dotsEl;
+                this.products = products;
+                this.autoplay = autoplay;
+                this.autoDelay = autoDelay;
+                this.current = 0;
+                this.perView = 5;
+                this.timer = null;
+                this.init();
+            }
+
+            getPerView() {
+                const w = window.innerWidth;
+                if (w <= 480) return 1.2;
+                if (w <= 576) return 2;
+                if (w <= 768) return 2;
+                if (w <= 992) return 3;
+                if (w <= 1200) return 4;
+                return 5;
+            }
+
+            totalSlides() {
+                return Math.max(0, this.products.length - Math.floor(this.perView));
+            }
+
+            render() {
+                this.track.innerHTML = this.products.map(p => buildCard(p)).join('');
+                this.resize();
+            }
+
+            resize() {
+                this.perView = this.getPerView();
+                const cardW = 100 / this.perView;
+                Array.from(this.track.children).forEach(c => {
+                    c.style.width = `calc(${cardW}% - 16px)`;
+                    c.style.marginRight = '20px';
+                    c.style.flexShrink = '0';
+                });
+                this.current = Math.min(this.current, this.totalSlides());
+                this.go(this.current, false);
+                this.buildDots();
+            }
+
+            go(idx, animate = true) {
+                this.current = Math.max(0, Math.min(idx, this.totalSlides()));
+                if (!animate) this.track.style.transition = 'none';
+                else this.track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+                const cardW = this.track.children[0]?.offsetWidth || 0;
+                const gap = 20;
+                this.track.style.transform = `translateX(-${this.current * (cardW + gap)}px)`;
+                this.updateControls();
+                this.updateDots();
+                // restore transition
+                if (!animate) setTimeout(() => this.track.style.transition = '', 50);
+            }
+
+            buildDots() {
+                if (!this.dotsEl) return;
+                const total = this.totalSlides() + 1;
+                if (total <= 1) { this.dotsEl.innerHTML = ''; return; }
+                this.dotsEl.innerHTML = Array.from({ length: total }, (_, i) =>
+                    `<div class="slider-dot ${i === this.current ? 'active' : ''}" data-idx="${i}"></div>`
+                ).join('');
+                this.dotsEl.querySelectorAll('.slider-dot').forEach(d => {
+                    d.addEventListener('click', () => { this.go(+d.dataset.idx); this.resetAuto(); });
+                });
+            }
+
+            updateDots() {
+                if (!this.dotsEl) return;
+                this.dotsEl.querySelectorAll('.slider-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === this.current);
+                });
+            }
+
+            updateControls() {
+                this.prev?.classList.toggle('hidden', this.current === 0);
+                this.next?.classList.toggle('hidden', this.current >= this.totalSlides());
+            }
+
+            startAuto() {
+                if (!this.autoplay) return;
+                this.timer = setInterval(() => {
+                    if (this.current >= this.totalSlides()) this.go(0);
+                    else this.go(this.current + 1);
+                }, this.autoDelay);
+            }
+
+            resetAuto() {
+                clearInterval(this.timer);
+                this.startAuto();
+            }
+
+            bindEvents() {
+                this.prev?.addEventListener('click', () => { this.go(this.current - 1); this.resetAuto(); });
+                this.next?.addEventListener('click', () => { this.go(this.current + 1); this.resetAuto(); });
+                window.addEventListener('resize', () => this.resize());
+
+                // Touch swipe
+                let startX = 0;
+                this.track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+                this.track.addEventListener('touchend', e => {
+                    const diff = startX - e.changedTouches[0].clientX;
+                    if (Math.abs(diff) > 50) { this.go(this.current + (diff > 0 ? 1 : -1)); this.resetAuto(); }
+                });
+            }
+
+            init() {
+                this.render();
+                this.bindEvents();
+                this.startAuto();
+                // trigger reveal after render
+                setTimeout(() => doReveal(), 100);
+            }
+        }
+
+        // ═══════════════════════════════════════════════
+        //  NOTE FILTER + SMART GRID/SLIDER
+        // ═══════════════════════════════════════════════
+        const SLIDER_THRESHOLD = 5; // more than this → slider
+        let noteSlider = null;
+        let activeFilter = 'all';
+
+        function getFilteredProducts(filter) {
+            if (filter === 'all') return NOTE_PRODUCTS;
+            return NOTE_PRODUCTS.filter(p => p.notes.includes(filter));
+        }
+
+        function renderNoteSection(filter) {
+            const products = getFilteredProducts(filter);
+            const count = products.length;
+            const grid = document.getElementById('note-grid');
+            const sliderSection = document.getElementById('note-slider-section');
+
+            if (count === 0) {
+                grid.style.display = 'grid';
+                sliderSection.style.display = 'none';
+                grid.innerHTML = `<div class="no-results" style="display:block;">No fragrances found for this note.</div>`;
+                return;
+            }
+
+            if (count <= SLIDER_THRESHOLD) {
+                // GRID MODE
+                sliderSection.style.display = 'none';
+                grid.style.display = 'grid';
+                grid.className = `product-grid-auto count-${Math.min(count, 5)}`;
+                grid.innerHTML = products.map(p => buildCard(p)).join('');
+                setTimeout(() => doReveal(), 100);
+                // destroy old slider
+                if (noteSlider) { clearInterval(noteSlider.timer); noteSlider = null; }
+            } else {
+                // SLIDER MODE
+                grid.style.display = 'none';
+                sliderSection.style.display = 'block';
+                const track = document.getElementById('note-track');
+                if (noteSlider) { clearInterval(noteSlider.timer); noteSlider = null; }
+                noteSlider = new SmartSlider({
+                    trackEl: track,
+                    prevBtn: document.getElementById('note-prev'),
+                    nextBtn: document.getElementById('note-next'),
+                    dotsEl: document.getElementById('note-dots'),
+                    products: products,
+                    autoplay: true,
+                    autoDelay: 4000,
+                });
+            }
+        }
+
+        // Tab click handler
+        document.getElementById('note-tabs').addEventListener('click', e => {
+            const btn = e.target.closest('.ftab');
+            if (!btn) return;
+            document.querySelectorAll('.ftab').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            activeFilter = btn.dataset.filter;
+            renderNoteSection(activeFilter);
+        });
+
+        // ═══════════════════════════════════════════════
+        //  INIT ALL SLIDERS
+        // ═══════════════════════════════════════════════
+        const featSlider = new SmartSlider({
+            trackEl: document.getElementById('feat-track'),
+            prevBtn: document.getElementById('feat-prev'),
+            nextBtn: document.getElementById('feat-next'),
+            dotsEl: document.getElementById('feat-dots'),
+            products: FEATURED_PRODUCTS,
+            autoplay: true,
+            autoDelay: 3500,
+        });
+
+        const alsoSlider = new SmartSlider({
+            trackEl: document.getElementById('also-track'),
+            prevBtn: document.getElementById('also-prev'),
+            nextBtn: document.getElementById('also-next'),
+            dotsEl: document.getElementById('also-dots'),
+            products: ALSO_LOVED,
+            autoplay: true,
+            autoDelay: 4200,
+        });
+
+        // Init note section with 'all' (20 products → slider)
+        renderNoteSection('all');
+
+        // ═══════════════════════════════════════════════
+        //  HEADER SCROLL
+        // ═══════════════════════════════════════════════
+        const header = document.getElementById('site-header');
+        const annBar = document.querySelector('.announcement-bar');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 80) {
+                header.classList.add('scrolled');
+                if (annBar) annBar.style.display = 'none';
+            } else {
+                header.classList.remove('scrolled');
+                if (annBar) annBar.style.display = '';
+            }
+        }, { passive: true });
+
+        // ═══════════════════════════════════════════════
+        //  SCROLL REVEAL
+        // ═══════════════════════════════════════════════
+        function doReveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 60) {
+                    el.classList.add('visible');
+                }
+            });
+        }
+        window.addEventListener('scroll', doReveal, { passive: true });
+        doReveal();
+
+        // ═══════════════════════════════════════════════
+        //  SEARCH
+        // ═══════════════════════════════════════════════
+        const searchBtn = document.getElementById('search-btn');
+        const searchOverlay = document.getElementById('search-overlay');
+        const searchCloseBtn = document.getElementById('search-close');
+        const searchFieldEl = document.getElementById('search-field');
+
+        searchBtn.addEventListener('click', () => {
+            searchOverlay.classList.add('open');
+            setTimeout(() => searchFieldEl.focus(), 300);
+        });
+        searchCloseBtn.addEventListener('click', () => searchOverlay.classList.remove('open'));
+
+        // ═══════════════════════════════════════════════
+        //  MOBILE NAV
+        // ═══════════════════════════════════════════════
+        document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-nav').classList.add('open'));
+        document.getElementById('mobile-close').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                searchOverlay.classList.remove('open');
+                document.getElementById('mobile-nav').classList.remove('open');
+            }
+        });
+
+        // ═══════════════════════════════════════════════
+        //  PARALLAX HERO
+        // ═══════════════════════════════════════════════
+        const heroBg = document.getElementById('hero-bg');
+        window.addEventListener('scroll', () => {
+            if (heroBg) heroBg.style.transform = `translateY(${window.scrollY * .3}px)`;
+        }, { passive: true });
+    </script>
+</body>
+
+</html>

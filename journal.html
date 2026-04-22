@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Scent Journal | ALFAIZAM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .journal-header { padding: 150px 0 80px; text-align: center; }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            padding-bottom: 100px;
+        }
+        .blog-card {
+            cursor: pointer;
+        }
+        .blog-img {
+            height: 300px;
+            background: var(--beige);
+            margin-bottom: 25px;
+            overflow: hidden;
+        }
+        .blog-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.8s ease;
+        }
+        .blog-card:hover .blog-img img {
+            transform: scale(1.05);
+        }
+        .blog-meta {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        .blog-title {
+            font-size: 24px;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+        @media (max-width: 992px) {
+            .blog-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 576px) {
+            .blog-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Luxury Top Bar -->
+    <div class="luxury-bar hidden">
+        <div class="container">
+            <div class="luxury-bar-item uppercase-ls">
+                <i class="fa-solid fa-truck-fast"></i> Complimentary Worldwide Shipping
+            </div>
+            <div class="luxury-bar-item uppercase-ls">
+                <i class="fa-solid fa-award"></i> 100% Authentic Premium Blends
+            </div>
+        </div>
+    </div>
+
+    <!-- Header -->
+    <header id="main-header" class="header-opaque">
+        <div class="container">
+            <nav class="nav-container">
+                <div class="logo-group">
+                    <div class="menu-toggle" id="mobile-menu-open">
+                        <i class="fa-solid fa-bars-staggered"></i>
+                    </div>
+                    <a href="index.html" class="logo">
+                        <i class="fa-solid fa-droplet"></i> ALFAIZAM
+                    </a>
+                </div>
+                
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+
+                <div class="nav-icons">
+                    <i class="fa-solid fa-magnifying-glass" id="search-open"></i>
+                    <a href="wishlist.html" class="hide-mobile"><i class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html" style="position: relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span id="cart-count" style="position: absolute; top: -8px; right: -10px; background: var(--gold); color: white; font-size: 10px; width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center;">0</span>
+                    </a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav" id="mobile-nav">
+        <div class="mobile-nav-close" id="mobile-nav-close">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div style="margin-top: 50px; text-align: center;">
+            <p class="uppercase-ls" style="color: var(--gold); margin-bottom: 20px;">Follow Us</p>
+            <div style="display: flex; gap: 20px; justify-content: center;">
+                <a href="#" style="color: white;"><i class="fa-brands fa-instagram"></i></a>
+                <a href="#" style="color: white;"><i class="fa-brands fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Search Modal -->
+    <div class="search-modal" id="search-modal">
+        <div class="search-close" id="search-close">
+            <i class="fa-solid fa-xmark"></i>
+        </div>
+        <div class="search-form">
+            <p class="uppercase-ls" style="color: var(--gold); margin-bottom: 20px;">What are you looking for?</p>
+            <input type="text" class="search-input" placeholder="Search fragrances..." id="search-input">
+            <div style="margin-top: 40px;">
+                <p style="color: rgba(255,255,255,0.4); font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Popular: Royal Oud, Santal, Midnight Bloom</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="journal-header">
+        <div class="container">
+            <h1 style="font-size: 56px;">The Scent Journal</h1>
+            <p style="color: var(--text-muted); letter-spacing: 2px; margin-top: 10px;">STORIES OF TRADITION, LUXURY, AND OUD</p>
+        </div>
+    </div>
+
+    <section class="container">
+        <div class="blog-grid">
+            <!-- Post 1 -->
+            <div class="blog-card reveal">
+                <div class="blog-img"><img src="images/hero.png" alt="Oud"></div>
+                <p class="blog-meta">April 15, 2024 — Heritage</p>
+                <h2 class="blog-title">The Secret History of Cambodian Oud</h2>
+                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Discover the origins of the world's most expensive fragrance ingredient...</p>
+                <a href="#" style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; border-bottom: 1px solid var(--gold); padding-bottom: 5px;">Read More</a>
+            </div>
+            <!-- Post 2 -->
+            <div class="blog-card reveal">
+                <div class="blog-img"><img src="images/attar.png" alt="Attar"></div>
+                <p class="blog-meta">April 10, 2024 — Lifestyle</p>
+                <h2 class="blog-title">How to Layer Fragrances Like a Master</h2>
+                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">Creating your unique signature scent requires a delicate touch and patience...</p>
+                <a href="#" style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; border-bottom: 1px solid var(--gold); padding-bottom: 5px;">Read More</a>
+            </div>
+            <!-- Post 3 -->
+            <div class="blog-card reveal">
+                <div class="blog-img"><img src="images/oud.png" alt="Bakhoor"></div>
+                <p class="blog-meta">April 05, 2024 — Tradition</p>
+                <h2 class="blog-title">The Ritual of Bakhoor in Arabian Homes</h2>
+                <p style="font-size: 14px; color: var(--text-muted); margin-bottom: 20px;">More than just a scent, burning bakhoor is a symbol of hospitality and grace...</p>
+                <a href="#" style="font-size: 12px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; border-bottom: 1px solid var(--gold); padding-bottom: 5px;">Read More</a>
+            </div>
+        </div>
+    </section>
+
+    <footer><div class="container"><div class="footer-grid"><div class="footer-col"><a href="index.html" class="logo" style="color: white; margin-bottom: 20px; display: block;">ALFAIZAM</a><p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">The ultimate destination for luxury fragrances and authentic Arabian oud.</p><div style="display: flex; gap: 15px;"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-pinterest"></i></a></div></div><div class="footer-col"><h4>Collections</h4><ul><li><a href="shop.html">Exquisite Oud</a></li><li><a href="shop.html">Premium Attar</a></li><li><a href="shop.html">Gift Sets</a></li><li><a href="shop.html">Bakhoor</a></li></ul></div><div class="footer-col"><h4>Customer Care</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="why-us.html">Shipping & Returns</a></li><li><a href="faq.html">FAQs</a></li><li><a href="reviews.html">Reviews</a></li></ul></div><div class="footer-col"><h4>About</h4><ul><li><a href="about.html">Our Story</a></li><li><a href="journal.html">Journal</a></li><li><a href="why-us.html">Why Choose Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2024 ALFAIZAM. All Rights Reserved.</p><div style="display: flex; gap: 20px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div></footer>
+
+    <script>
+        // Header & Luxury Bar Effect
+        const header = document.getElementById('main-header');
+        const luxuryBar = document.querySelector('.luxury-bar');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                if(luxuryBar) luxuryBar.classList.add('hidden');
+            } else {
+                header.classList.remove('scrolled');
+                if(luxuryBar) luxuryBar.classList.remove('hidden');
+            }
+        });
+
+        // Search Modal Logic
+        const searchOpen = document.getElementById('search-open');
+        const searchClose = document.getElementById('search-close');
+        const searchModal = document.getElementById('search-modal');
+        const searchInput = document.getElementById('search-input');
+
+        if (searchOpen) {
+            searchOpen.addEventListener('click', () => {
+                searchModal.classList.add('active');
+                setTimeout(() => searchInput.focus(), 300);
+            });
+        }
+
+        if (searchClose) {
+            searchClose.addEventListener('click', () => {
+                searchModal.classList.remove('active');
+            });
+        }
+
+        // Mobile Nav Logic
+        const mobileMenuOpen = document.getElementById('mobile-menu-open');
+        const mobileNavClose = document.getElementById('mobile-nav-close');
+        const mobileNav = document.getElementById('mobile-nav');
+
+        if (mobileMenuOpen) {
+            mobileMenuOpen.addEventListener('click', () => {
+                mobileNav.classList.add('active');
+            });
+        }
+
+        if (mobileNavClose) {
+            mobileNavClose.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        }
+
+        // Close on Esc
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                searchModal.classList.remove('active');
+                mobileNav.classList.remove('active');
+            }
+        });
+
+        // Reveal Logic
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>

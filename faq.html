@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQs | ALFAIZAM Help</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .faq-header { padding: 150px 0 60px; text-align: center; }
+        .faq-container { max-width: 800px; margin: 0 auto 100px; }
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 25px 0;
+        }
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            font-size: 18px;
+            font-family: 'Playfair Display', serif;
+        }
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            color: var(--text-muted);
+            font-size: 15px;
+            margin-top: 0;
+        }
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 20px;
+        }
+        .faq-item.active i {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header" class="scrolled">
+        <div class="container">
+            <nav class="nav-container">
+                <div class="menu-toggle" id="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <a href="index.html" class="logo">ALFAIZAM</a>
+                <div class="nav-icons">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="wishlist.html"><i class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="faq-header">
+        <div class="container">
+            <h1 style="font-size: 42px;">Frequently Asked Questions</h1>
+            <p style="color: var(--text-muted); letter-spacing: 2px;">WE ARE HERE TO ASSIST YOU</p>
+        </div>
+    </div>
+
+    <section class="container">
+        <div class="faq-container">
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>What is the difference between Perfume and Attar?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Attars are highly concentrated fragrance oils produced through traditional distillation, containing no alcohol. Perfumes (Eau de Parfum) are alcohol-based sprays with a lighter projection but varied complexity.
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>How long do your fragrances last?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Our Extrait de Parfum and Pure Oils are designed for maximum longevity. On average, they last between 8 to 14 hours depending on the skin type and environmental conditions.
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>Do you offer international shipping?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    Yes, Alfaizam ships to over 150 countries. Shipping times vary from 3-7 business days for express delivery.
+                </div>
+            </div>
+            <div class="faq-item reveal">
+                <div class="faq-question">
+                    <span>How should I store my perfume?</span>
+                    <i class="fa-solid fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    To preserve the integrity of the notes, store your bottles in a cool, dark place away from direct sunlight and extreme temperature fluctuations.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer><div class="container"><div class="footer-grid"><div class="footer-col"><a href="index.html" class="logo" style="color: white; margin-bottom: 20px; display: block;">ALFAIZAM</a><p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">The ultimate destination for luxury fragrances and authentic Arabian oud.</p><div style="display: flex; gap: 15px;"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-pinterest"></i></a></div></div><div class="footer-col"><h4>Collections</h4><ul><li><a href="shop.html">Exquisite Oud</a></li><li><a href="shop.html">Premium Attar</a></li><li><a href="shop.html">Gift Sets</a></li><li><a href="shop.html">Bakhoor</a></li></ul></div><div class="footer-col"><h4>Customer Care</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="why-us.html">Shipping & Returns</a></li><li><a href="faq.html">FAQs</a></li><li><a href="reviews.html">Reviews</a></li></ul></div><div class="footer-col"><h4>About</h4><ul><li><a href="about.html">Our Story</a></li><li><a href="journal.html">Journal</a></li><li><a href="why-us.html">Why Choose Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2024 ALFAIZAM. All Rights Reserved.</p><div style="display: flex; gap: 20px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div></footer>
+
+    <script>
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            item.querySelector('.faq-question').addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Oud Gold | ALFAIZAM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="announcement-bar">
+        <div class="marquee-track">
+            <span class="marquee-item">Complimentary Worldwide Shipping <span class="dot"></span></span>
+            <span class="marquee-item">100% Authentic Arabian Oud <span class="dot"></span></span>
+            <span class="marquee-item">Complimentary Worldwide Shipping <span class="dot"></span></span>
+            <span class="marquee-item">100% Authentic Arabian Oud <span class="dot"></span></span>
+        </div>
+    </div>
+
+    <header class="site-header opaque" id="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div style="display:flex;align-items:center;gap:18px;">
+                    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                    <a href="index.html" class="logo"><span class="logo-gem"></span>Alfaizam</a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="collections.html">Collections</a>
+                    <a href="about.html">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <a href="wishlist.html" class="hide-mobile"><i class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html" style="position:relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-badge">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mobile-close" id="mobile-close"><i class="fa-solid fa-xmark"></i></button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-footer"><a href="wishlist.html">Wishlist</a><a href="cart.html">Bag</a></div>
+    </nav>
+
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close-btn" id="search-close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="search-body">
+            <span class="search-label">Search Our Collection</span>
+            <input type="text" class="search-field" placeholder="Oud, Attar, Rose…" id="search-field">
+        </div>
+    </div>
+
+    <!-- Breadcrumb -->
+    <div style="padding: 110px 0 0; background: var(--ivory);">
+        <div class="container">
+            <p style="font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--ash);">
+                <a href="shop.html" style="color:var(--ash);">Shop</a>
+                <span style="margin:0 10px;color:var(--gold);">›</span>
+                Pure Oud
+                <span style="margin:0 10px;color:var(--gold);">›</span>
+                Royal Oud Gold
+            </p>
+        </div>
+    </div>
+
+    <!-- Product Detail -->
+    <section style="background:var(--ivory);">
+        <div class="container">
+            <div class="product-layout">
+
+                <!-- Gallery -->
+                <div class="product-gallery">
+                    <div class="gallery-thumbs">
+                        <div class="gallery-thumb active" onclick="changeImg(this,'images/oud.png')">
+                            <img src="images/oud.png" alt="">
+                        </div>
+                        <div class="gallery-thumb" onclick="changeImg(this,'images/attar.png')">
+                            <img src="images/attar.png" alt="">
+                        </div>
+                        <div class="gallery-thumb" onclick="changeImg(this,'images/hero.png')">
+                            <img src="images/hero.png" alt="">
+                        </div>
+                    </div>
+                    <div class="gallery-main">
+                        <img id="main-img" src="images/oud.png" alt="Royal Oud Gold">
+                    </div>
+                </div>
+
+                <!-- Info Panel -->
+                <div class="product-info-panel">
+                    <span class="product-cat-label">Pure Oud Collection</span>
+                    <h1
+                        style="font-family:'Cormorant Garamond',serif;font-size:54px;font-weight:300;margin-bottom:14px;">
+                        Royal Oud Gold</h1>
+
+                    <div class="product-stars">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>24 Reviews</span>
+                    </div>
+
+                    <p class="product-price-big">$280.00</p>
+
+                    <p class="product-desc">A majestic blend of aged Cambodian Oud, Damascus Rose, and warm Saffron.
+                        This fragrance captures the essence of royal heritage with deep smoky undertones and lingering
+                        floral sweetness that evolves beautifully on the skin.</p>
+
+                    <p class="size-label">Select Size</p>
+                    <div class="size-picker">
+                        <button class="size-btn active">50ml</button>
+                        <button class="size-btn">100ml</button>
+                        <button class="size-btn">200ml</button>
+                    </div>
+
+                    <div class="qty-add-row">
+                        <div class="qty-ctrl">
+                            <button id="qty-minus"><i class="fa-solid fa-minus" style="font-size:10px;"></i></button>
+                            <span id="qty-val">1</span>
+                            <button id="qty-plus"><i class="fa-solid fa-plus" style="font-size:10px;"></i></button>
+                        </div>
+                        <a href="cart.html" class="btn btn-gold btn-full">Add to Bag</a>
+                    </div>
+
+                    <div class="product-actions">
+                        <button><i class="fa-regular fa-heart"></i> Add to Wishlist</button>
+                        <button><i class="fa-solid fa-share-nodes"></i> Share</button>
+                    </div>
+
+                    <!-- Delivery info -->
+                    <div
+                        style="border-top:1px solid var(--bd-light);padding-top:24px;display:flex;flex-direction:column;gap:12px;">
+                        <div style="display:flex;gap:12px;align-items:center;font-size:12px;color:var(--ash);">
+                            <i class="fa-solid fa-truck-fast" style="color:var(--gold);width:16px;"></i>
+                            Complimentary worldwide shipping
+                        </div>
+                        <div style="display:flex;gap:12px;align-items:center;font-size:12px;color:var(--ash);">
+                            <i class="fa-solid fa-box-open" style="color:var(--gold);width:16px;"></i>
+                            Luxury velvet-lined packaging
+                        </div>
+                        <div style="display:flex;gap:12px;align-items:center;font-size:12px;color:var(--ash);">
+                            <i class="fa-solid fa-shield-check" style="color:var(--gold);width:16px;"></i>
+                            100% authentic, certified origin
+                        </div>
+                    </div>
+
+                    <!-- Scent Notes -->
+                    <div class="scent-notes">
+                        <div class="note-block">
+                            <i class="fa-solid fa-leaf"></i>
+                            <p class="nt">Top Notes</p>
+                            <p class="nv">Saffron, Cinnamon</p>
+                        </div>
+                        <div class="note-block">
+                            <i class="fa-solid fa-droplet"></i>
+                            <p class="nt">Heart Notes</p>
+                            <p class="nv">Rose, Patchouli</p>
+                        </div>
+                        <div class="note-block">
+                            <i class="fa-solid fa-tree"></i>
+                            <p class="nt">Base Notes</p>
+                            <p class="nv">Cambodian Oud, Amber</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Products -->
+    <section class="section" style="background:var(--cream);">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom:48px;">
+                <span class="label">You May Also Like</span>
+                <div class="gold-line gold-line-center" style="margin-top:14px;"></div>
+                <h2 style="font-size:42px;margin-top:16px;">Related Fragrances</h2>
+            </div>
+            <div class="product-slider-wrapper">
+                <button class="slider-btn prev" onclick="scrollSlider(this, -1)"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="product-slider">
+                <div class="product-card reveal">
+                    <div class="prod-img">
+                        <img src="images/attar.png" alt="Santal Essence">
+                        <div class="prod-hover">
+                            <div class="prod-hover-action">
+                                <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <p class="prod-cat">Attar</p>
+                        <h3 class="prod-name"><a href="product.html">Santal Essence</a></h3>
+                        <p class="prod-price">$120.00</p>
+                    </div>
+                </div>
+                <div class="product-card reveal d1">
+                    <div class="prod-img">
+                        <img src="images/hero.png" alt="Midnight Bloom">
+                        <div class="prod-hover">
+                            <div class="prod-hover-action">
+                                <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <p class="prod-cat">EDP</p>
+                        <h3 class="prod-name"><a href="product.html">Midnight Bloom</a></h3>
+                        <p class="prod-price">$195.00</p>
+                    </div>
+                </div>
+                <div class="product-card reveal d2">
+                    <div class="prod-img">
+                        <img src="images/oud.png" alt="Desert Rose">
+                        <div class="prod-hover">
+                            <div class="prod-hover-action">
+                                <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <p class="prod-cat">Oriental</p>
+                        <h3 class="prod-name"><a href="product.html">Desert Rose</a></h3>
+                        <p class="prod-price">$210.00</p>
+                    </div>
+                </div>
+                    </div>
+                </div>
+
+                <div class="product-card reveal d3">
+                    <div class="prod-img">
+                        <img src="images/attar.png" alt="Santal Essence">
+                        <div class="prod-hover">
+                            <div class="prod-hover-action">
+                                <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <p class="prod-cat">Attar</p>
+                        <h3 class="prod-name"><a href="product.html">Santal Essence</a></h3>
+                        <p class="prod-price">$120.00</p>
+                    </div>
+                </div>
+                <div class="product-card reveal d1">
+                    <div class="prod-img">
+                        <img src="images/hero.png" alt="Midnight Bloom">
+                        <div class="prod-hover">
+                            <div class="prod-hover-action">
+                                <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <p class="prod-cat">EDP</p>
+                        <h3 class="prod-name"><a href="product.html">Midnight Bloom</a></h3>
+                        <p class="prod-price">$195.00</p>
+                    </div>
+                </div>
+                <div class="product-card reveal d2">
+                    <div class="prod-img">
+                        <img src="images/oud.png" alt="Desert Rose">
+                        <div class="prod-hover">
+                            <div class="prod-hover-action">
+                                <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="prod-info">
+                        <p class="prod-cat">Oriental</p>
+                        <h3 class="prod-name"><a href="product.html">Desert Rose</a></h3>
+                        <p class="prod-price">$210.00</p>
+                    </div>
+                </div>
+
+                </div>
+                <button class="slider-btn next" onclick="scrollSlider(this, 1)"><i class="fa-solid fa-chevron-right"></i></button>
+            </div>
+        </div>
+    </section>
+
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color:rgba(244,239,230,.8);font-size:20px;"><span
+                            class="logo-gem"></span>Alfaizam</a>
+                    <p class="footer-brand-text">The ultimate destination for luxury fragrances and authentic Arabian
+                        oud.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-pinterest-p"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Collections</h5>
+                    <ul>
+                        <li><a href="shop.html">Exquisite Oud</a></li>
+                        <li><a href="shop.html">Premium Attar</a></li>
+                        <li><a href="shop.html">Gift Sets</a></li>
+                        <li><a href="shop.html">Bakhoor</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Customer Care</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>The House</h5>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="journal.html">The Journal</a></li>
+                        <li><a href="why-us.html">Why Choose Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Alfaizam. All Rights Reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="_shared.js"></script>
+    <script>
+        // Gallery
+        function changeImg(thumb, src) {
+            document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+            thumb.classList.add('active');
+            document.getElementById('main-img').src = src;
+        }
+
+        // Qty
+        let qty = 1;
+        document.getElementById('qty-plus').addEventListener('click', () => {
+            qty++;
+            document.getElementById('qty-val').textContent = qty;
+        });
+        document.getElementById('qty-minus').addEventListener('click', () => {
+            if (qty > 1) { qty--; document.getElementById('qty-val').textContent = qty; }
+        });
+
+        // Size
+        document.querySelectorAll('.size-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

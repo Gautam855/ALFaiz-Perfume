@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Why Us | ALFAIZAM Excellence</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        .why-card {
+            padding: 40px;
+            background: white;
+            border: 1px solid var(--border-color);
+            transition: var(--transition);
+            text-align: center;
+        }
+        .why-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--gold);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.05);
+        }
+        .why-card i {
+            font-size: 36px;
+            color: var(--gold);
+            margin-bottom: 20px;
+            display: block;
+        }
+        .why-card h3 {
+            margin-bottom: 15px;
+            font-size: 20px;
+        }
+        .why-card p {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+        @media (max-width: 992px) {
+            .why-grid { grid-template-columns: repeat(2, 1fr); }
+        }
+        @media (max-width: 576px) {
+            .why-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="main-header" class="scrolled">
+        <div class="container">
+            <nav class="nav-container">
+                <div class="menu-toggle" id="mobile-menu-btn"><i class="fa-solid fa-bars"></i></div>
+                <ul class="nav-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="shop.html">Shop</a></li>
+                    <li><a href="collections.html">Collections</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+                <a href="index.html" class="logo">ALFAIZAM</a>
+                <div class="nav-icons">
+                    <i class="fa-solid fa-magnifying-glass"></i>
+                    <a href="wishlist.html"><i class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html"><i class="fa-solid fa-bag-shopping"></i></a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <section class="shop-header" style="padding: 150px 0 60px; background: var(--beige);">
+        <div class="container text-center">
+            <h1 style="font-size: 56px; margin-bottom: 10px;">The Alfaizam Difference</h1>
+            <p style="color: var(--text-muted); letter-spacing: 2px;">WHY WE ARE THE FIRST CHOICE FOR CONNOISSEURS</p>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="why-grid">
+            <div class="why-card reveal">
+                <i class="fa-solid fa-gem"></i>
+                <h3>Premium Ingredients</h3>
+                <p>We source only the finest raw materials, from Cambodian Oud to Grasse Roses, ensuring every drop is pure perfection.</p>
+            </div>
+            <div class="why-card reveal">
+                <i class="fa-solid fa-clock-rotate-left"></i>
+                <h3>Long Lasting</h3>
+                <p>Our fragrances are highly concentrated (Extrait de Parfum), designed to linger for 12+ hours on skin and days on clothing.</p>
+            </div>
+            <div class="why-card reveal">
+                <i class="fa-solid fa-box-open"></i>
+                <h3>Luxury Packaging</h3>
+                <p>Unboxing is an experience. Every bottle is housed in a bespoke velvet-lined box with gold foil detailing.</p>
+            </div>
+            <div class="why-card reveal">
+                <i class="fa-solid fa-truck-fast"></i>
+                <h3>Global Delivery</h3>
+                <p>Fast and secure international shipping with real-time tracking to over 150 countries worldwide.</p>
+            </div>
+            <div class="why-card reveal">
+                <i class="fa-solid fa-shield-check"></i>
+                <h3>Authentic Blends</h3>
+                <p>100% original formulations. We do not use "inspired" scents; everything is a unique Alfaizam creation.</p>
+            </div>
+            <div class="why-card reveal">
+                <i class="fa-solid fa-leaf"></i>
+                <h3>Ethically Sourced</h3>
+                <p>We work directly with local farmers to ensure sustainable harvesting of oud and botanical extracts.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background: var(--primary-black); color: white; text-align: center; padding: 100px 0;">
+        <div class="container">
+            <h2 style="font-size: 42px; margin-bottom: 30px;">Join the Elite</h2>
+            <p style="max-width: 600px; margin: 0 auto 40px; color: rgba(255,255,255,0.7);">Experience the heights of Arabian luxury. Subscribe to our private list for exclusive early access to limited editions.</p>
+            <form style="max-width: 500px; margin: 0 auto; display: flex; gap: 10px;">
+                <input type="email" placeholder="Your Email Address" style="flex: 1; padding: 15px; background: transparent; border: 1px solid var(--gold); color: white;">
+                <button type="submit" class="btn btn-primary" style="padding: 15px 30px;">Join Now</button>
+            </form>
+        </div>
+    </section>
+
+    <footer><div class="container"><div class="footer-grid"><div class="footer-col"><a href="index.html" class="logo" style="color: white; margin-bottom: 20px; display: block;">ALFAIZAM</a><p style="font-size: 14px; color: rgba(255,255,255,0.6); margin-bottom: 20px;">The ultimate destination for luxury fragrances and authentic Arabian oud.</p><div style="display: flex; gap: 15px;"><a href="#"><i class="fa-brands fa-instagram"></i></a><a href="#"><i class="fa-brands fa-facebook-f"></i></a><a href="#"><i class="fa-brands fa-pinterest"></i></a></div></div><div class="footer-col"><h4>Collections</h4><ul><li><a href="shop.html">Exquisite Oud</a></li><li><a href="shop.html">Premium Attar</a></li><li><a href="shop.html">Gift Sets</a></li><li><a href="shop.html">Bakhoor</a></li></ul></div><div class="footer-col"><h4>Customer Care</h4><ul><li><a href="contact.html">Contact Us</a></li><li><a href="why-us.html">Shipping & Returns</a></li><li><a href="faq.html">FAQs</a></li><li><a href="reviews.html">Reviews</a></li></ul></div><div class="footer-col"><h4>About</h4><ul><li><a href="about.html">Our Story</a></li><li><a href="journal.html">Journal</a></li><li><a href="why-us.html">Why Choose Us</a></li></ul></div></div><div class="footer-bottom"><p>&copy; 2024 ALFAIZAM. All Rights Reserved.</p><div style="display: flex; gap: 20px;"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div></div></footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                if (elementTop < windowHeight - 100) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal();
+    </script>
+</body>
+</html>

@@ -1,0 +1,1182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Heritage | ALFAIZAM</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* ── About-specific ── */
+
+        /* Full-bleed hero */
+        .about-hero {
+            min-height: 100vh;
+            background: var(--ink);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: white;
+            text-align: center;
+        }
+
+        .about-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('images/hero.png');
+            background-size: cover;
+            background-position: center;
+            opacity: .18;
+        }
+
+        .about-hero-vignette {
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 100% 60% at 50% 100%, rgba(13, 12, 11, .95) 0%, transparent 65%),
+                linear-gradient(to bottom, rgba(13, 12, 11, .6) 0%, rgba(13, 12, 11, .05) 40%, rgba(13, 12, 11, .7) 100%);
+        }
+
+        .about-hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 24px;
+            max-width: 900px;
+        }
+
+        .about-hero-content .eyebrow {
+            font-size: 9px;
+            letter-spacing: 8px;
+            text-transform: uppercase;
+            color: var(--gold-pale);
+            opacity: 0;
+            animation: fadeInUp .9s forwards .3s;
+            margin-bottom: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .about-hero-content .eyebrow::before,
+        .about-hero-content .eyebrow::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--bd-gold);
+        }
+
+        .about-hero-content h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(64px, 9vw, 130px);
+            font-weight: 300;
+            line-height: .9;
+            letter-spacing: -.02em;
+            opacity: 0;
+            animation: fadeInUp .9s forwards .55s;
+            margin-bottom: 28px;
+        }
+
+        .about-hero-content h1 em {
+            font-style: italic;
+            color: rgba(232, 213, 160, .8);
+            display: block;
+        }
+
+        .about-hero-content p {
+            font-size: 14px;
+            color: rgba(255, 255, 255, .45);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeInUp .9s forwards .75s;
+            margin-bottom: 48px;
+        }
+
+        .about-hero-actions {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            opacity: 0;
+            animation: fadeInUp .9s forwards .95s;
+        }
+
+        /* ── Opening statement ── */
+        .opening-section {
+            background: var(--ivory);
+            padding: 120px 0 80px;
+        }
+
+        .opening-quote {
+            max-width: 820px;
+            margin: 0 auto 80px;
+            text-align: center;
+            padding: 0 40px;
+        }
+
+        .opening-quote p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(24px, 3vw, 38px);
+            font-weight: 300;
+            line-height: 1.5;
+            color: var(--charcoal);
+        }
+
+        /* ── Stats grid ── */
+        .stat-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--bd-light);
+        }
+
+        @media (max-width: 768px) {
+            .stat-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .stat-block-v2 {
+            background: var(--ivory);
+            padding: 52px 36px;
+            text-align: center;
+            transition: background .4s;
+        }
+
+        .stat-block-v2:hover {
+            background: white;
+        }
+
+        .stat-block-v2 .num {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: clamp(52px, 5vw, 76px);
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-block-v2 .lbl {
+            font-size: 9px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--ash);
+        }
+
+        /* ── Philosophy split ── */
+        .philosophy-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 620px;
+        }
+
+        @media (max-width: 768px) {
+            .philosophy-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .philosophy-img {
+                height: 340px;
+            }
+        }
+
+        .philosophy-img {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .philosophy-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.4s;
+        }
+
+        .philosophy-img:hover img {
+            transform: scale(1.04);
+        }
+
+        .philosophy-content {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 72px;
+        }
+
+        .philosophy-inner {
+            max-width: 500px;
+        }
+
+        @media (max-width: 992px) {
+            .philosophy-content {
+                padding: 56px 40px;
+            }
+        }
+
+        /* ── Timeline ── */
+        .timeline-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 1px;
+            background: linear-gradient(to bottom, transparent, var(--bd-gold) 15%, var(--bd-gold) 85%, transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 56px 1fr;
+            gap: 0;
+            margin-bottom: 60px;
+            align-items: center;
+        }
+
+        .timeline-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .tl-left {
+            text-align: right;
+            padding-right: 40px;
+        }
+
+        .tl-right {
+            text-align: left;
+            padding-left: 40px;
+        }
+
+        .tl-dot-wrap {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .tl-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 3px solid var(--ivory);
+            box-shadow: 0 0 0 1px var(--gold);
+        }
+
+        .tl-year {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 52px;
+            font-weight: 300;
+            color: var(--gold);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .tl-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-weight: 400;
+            margin-bottom: 8px;
+            color: var(--ink);
+        }
+
+        .tl-desc {
+            font-size: 13px;
+            color: var(--ash);
+            line-height: 1.75;
+        }
+
+        /* Alternating: odd items — year on right, text on left */
+        .timeline-item:nth-child(even) .tl-left {
+            order: 3;
+            text-align: left;
+            padding-right: 0;
+            padding-left: 40px;
+        }
+
+        .timeline-item:nth-child(even) .tl-dot-wrap {
+            order: 2;
+        }
+
+        .timeline-item:nth-child(even) .tl-right {
+            order: 1;
+            text-align: right;
+            padding-left: 0;
+            padding-right: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .timeline-line {
+                left: 20px;
+            }
+
+            .timeline-item {
+                grid-template-columns: 40px 1fr;
+                grid-template-rows: auto;
+            }
+
+            .tl-dot-wrap {
+                order: 1 !important;
+                grid-row: 1;
+            }
+
+            .tl-left,
+            .tl-right {
+                order: 2 !important;
+                grid-column: 2;
+                text-align: left !important;
+                padding: 0 0 0 16px !important;
+            }
+
+            .tl-right {
+                display: none;
+            }
+
+            .tl-year {
+                font-size: 36px;
+            }
+        }
+
+        /* ── Ingredients ── */
+        .ingredient-card {
+            background: var(--ivory);
+            padding: 52px 36px;
+            text-align: center;
+            border: 1px solid var(--bd-light);
+            transition: background .4s, transform .4s, box-shadow .4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ingredient-card::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+            transform: scaleX(0);
+            transition: transform .4s;
+        }
+
+        .ingredient-card:hover {
+            background: white;
+            transform: translateY(-4px);
+            box-shadow: 0 16px 48px rgba(0, 0, 0, .08);
+        }
+
+        .ingredient-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .ingredient-icon {
+            width: 64px;
+            height: 64px;
+            border: 1px solid var(--bd-gold);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 24px;
+            color: var(--gold);
+            font-size: 24px;
+            transition: all .4s;
+        }
+
+        .ingredient-card:hover .ingredient-icon {
+            background: var(--gold);
+            color: var(--ink);
+        }
+
+        /* ── Values ── */
+        .value-strip {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--bd-light);
+        }
+
+        @media (max-width: 768px) {
+            .value-strip {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .value-card {
+            background: var(--ink);
+            padding: 56px 44px;
+            color: white;
+            text-align: center;
+            transition: background .4s;
+        }
+
+        .value-card:hover {
+            background: var(--smoke);
+        }
+
+        .value-card i {
+            font-size: 28px;
+            color: var(--gold);
+            margin-bottom: 24px;
+            display: block;
+        }
+
+        .value-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 26px;
+            font-weight: 400;
+            margin-bottom: 14px;
+            color: rgba(244, 239, 230, .9);
+        }
+
+        .value-card p {
+            font-size: 13px;
+            color: rgba(255, 255, 255, .5);
+            line-height: 1.85;
+        }
+
+        /* ── Slider shared ── */
+        .smart-slider-prev,
+        .smart-slider-next {
+            position: absolute;
+            top: 38%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            background: white;
+            color: var(--ink);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.18);
+            z-index: 10;
+            border: 1px solid rgba(0, 0, 0, 0.06);
+            transition: all 0.3s;
+            cursor: pointer;
+            font-size: 13px;
+        }
+
+        .smart-slider-prev:hover,
+        .smart-slider-next:hover {
+            background: var(--gold);
+            color: white;
+            box-shadow: 0 6px 28px rgba(200, 164, 80, 0.4);
+        }
+
+        .smart-slider-prev {
+            left: -8px;
+        }
+
+        .smart-slider-next {
+            right: -8px;
+        }
+
+        .smart-slider-prev.hidden,
+        .smart-slider-next.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .smart-slider-section {
+            position: relative;
+        }
+
+        .smart-slider-wrapper {
+            overflow: hidden;
+        }
+
+        .smart-slider-track {
+            display: flex;
+            will-change: transform;
+        }
+
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 28px;
+        }
+
+        .slider-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid var(--ash);
+            cursor: pointer;
+            transition: all 0.35s;
+        }
+
+        .slider-dot.active {
+            background: var(--gold);
+            border-color: var(--gold);
+            width: 26px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="announcement-bar">
+        <div class="marquee-track">
+            <span class="marquee-item">Crafting Emotions Since 1992 <span class="dot"></span></span>
+            <span class="marquee-item">12 Master Perfumers <span class="dot"></span></span>
+            <span class="marquee-item">200+ Rare Ingredients <span class="dot"></span></span>
+            <span class="marquee-item">50,000+ Happy Clients Worldwide <span class="dot"></span></span>
+            <span class="marquee-item">Crafting Emotions Since 1992 <span class="dot"></span></span>
+            <span class="marquee-item">12 Master Perfumers <span class="dot"></span></span>
+            <span class="marquee-item">200+ Rare Ingredients <span class="dot"></span></span>
+            <span class="marquee-item">50,000+ Happy Clients Worldwide <span class="dot"></span></span>
+        </div>
+    </div>
+
+    <header class="site-header" id="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div style="display:flex;align-items:center;gap:18px;">
+                    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+                    <a href="index.html" class="logo"><span class="logo-gem"></span>Alfaizam</a>
+                </div>
+                <nav class="main-nav">
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop</a>
+                    <a href="collections.html">Collections</a>
+                    <a href="about.html" style="color:var(--gold-pale)!important;">About</a>
+                    <a href="contact.html">Contact</a>
+                </nav>
+                <div class="header-actions">
+                    <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <a href="wishlist.html" class="hide-mobile"><i class="fa-regular fa-heart"></i></a>
+                    <a href="cart.html" style="position:relative;">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                        <span class="cart-badge">0</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-nav" id="mobile-nav">
+        <button class="mobile-close" id="mobile-close"><i class="fa-solid fa-xmark"></i></button>
+        <ul class="mobile-nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="shop.html">Shop</a></li>
+            <li><a href="collections.html">Collections</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="mobile-nav-footer"><a href="wishlist.html">Wishlist</a><a href="cart.html">Bag</a></div>
+    </nav>
+
+    <div class="search-overlay" id="search-overlay">
+        <button class="search-close-btn" id="search-close"><i class="fa-solid fa-xmark"></i></button>
+        <div class="search-body">
+            <span class="search-label">Search Our Collection</span>
+            <input type="text" class="search-field" placeholder="Oud, Attar, Rose…" id="search-field">
+            <div class="search-hints">
+                <span class="search-hint">Royal Oud</span>
+                <span class="search-hint">Santal</span>
+                <span class="search-hint">Gift Sets</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ ABOUT HERO ══ -->
+    <section class="about-hero">
+        <div class="about-hero-bg"></div>
+        <div class="about-hero-vignette"></div>
+        <div class="about-hero-content">
+            <div class="eyebrow">Est. 1992 — Dubai, UAE</div>
+            <h1>Our<em>Heritage</em></h1>
+            <p>Crafting Emotions Since 1992</p>
+            <div class="about-hero-actions">
+                <a href="shop.html" class="btn btn-gold">Explore Collection</a>
+                <a href="contact.html" class="btn btn-outline-light">Get in Touch</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ OPENING STATEMENT + STATS ══ -->
+    <section class="opening-section">
+        <div class="container">
+            <div class="opening-quote reveal">
+                <span class="label" style="margin-bottom:16px;display:block;text-align:center;">The Beginning</span>
+                <div class="gold-line gold-line-center" style="margin-bottom:28px;"></div>
+                <p>
+                    Alfaizam was born from a passion for the rarest scents on earth. Our journey began in the aromatic
+                    souks of Dubai, where we learned the ancient art of blending oils that linger like memories —
+                    invisible yet unforgettable.
+                </p>
+            </div>
+            <div class="stat-grid-4">
+                <div class="stat-block-v2 reveal">
+                    <p class="num">32<span style="font-size:.45em">yrs</span></p>
+                    <p class="lbl">Of Mastery</p>
+                </div>
+                <div class="stat-block-v2 reveal d1">
+                    <p class="num">200<span style="font-size:.45em">+</span></p>
+                    <p class="lbl">Rare Ingredients</p>
+                </div>
+                <div class="stat-block-v2 reveal d2">
+                    <p class="num">12</p>
+                    <p class="lbl">Master Perfumers</p>
+                </div>
+                <div class="stat-block-v2 reveal d3">
+                    <p class="num">50k<span style="font-size:.45em">+</span></p>
+                    <p class="lbl">Happy Clients</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ PHILOSOPHY SPLIT ══ -->
+    <div class="philosophy-grid">
+        <div class="philosophy-content" style="background:var(--ink);">
+            <div class="philosophy-inner reveal">
+                <span class="label" style="margin-bottom:16px;display:block;">Our Philosophy</span>
+                <div class="gold-line gold-line-left" style="margin-bottom:24px;"></div>
+                <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-weight:300;color:rgba(244,239,230,.9);margin-bottom:24px;line-height:1.15;">
+                    More Than<br>a Scent
+                </h2>
+                <p style="color:rgba(255,255,255,.5);font-size:15px;line-height:1.9;margin-bottom:40px;">
+                    We believe that fragrance is the most intimate form of expression. It is a silent signature that
+                    introduces you before you speak and lingers after you've left. At Alfaizam, we don't just sell
+                    perfume — we bottle stories, traditions, and the essence of premium living.
+                </p>
+                <a href="why-us.html" class="btn btn-outline-light">Discover Our Vision</a>
+            </div>
+        </div>
+        <div class="philosophy-img">
+            <img src="images/attar.png" alt="Our Process">
+        </div>
+    </div>
+
+    <!-- ══ SOURCING SPLIT ══ -->
+    <div class="philosophy-grid">
+        <div class="philosophy-img">
+            <img src="images/oud.png" alt="Ingredients">
+        </div>
+        <div class="philosophy-content" style="background:var(--cream);">
+            <div class="philosophy-inner reveal">
+                <span class="label" style="margin-bottom:16px;display:block;">The Craft</span>
+                <div class="gold-line gold-line-left" style="margin-bottom:24px;"></div>
+                <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:clamp(34px,3.5vw,52px);font-weight:300;margin-bottom:24px;line-height:1.15;">
+                    Masterfully<br>Crafted
+                </h2>
+                <p style="color:var(--ash);font-size:15px;line-height:1.9;margin-bottom:40px;">
+                    We work directly with local farmers in Cambodia, India, and the Middle East to ensure sustainable
+                    harvesting of oud wood and botanical extracts. Every ingredient is selected for its purity and
+                    provenance — because what goes into the bottle is as important as what comes out.
+                </p>
+                <a href="why-us.html" class="btn btn-dark">Explore Ingredients</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ THE ALFAIZAM PALETTE (INGREDIENTS) ══ -->
+    <section class="section" style="background:var(--ivory);">
+        <div class="container">
+            <div class="text-center reveal" style="margin-bottom:64px;">
+                <span class="label" style="margin-bottom:16px;display:block;">Raw Materials</span>
+                <div class="gold-line gold-line-center"></div>
+                <h2 style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;margin-top:16px;">The
+                    Alfaizam Palette</h2>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+                <div class="ingredient-card reveal">
+                    <div class="ingredient-icon"><i class="fa-solid fa-tree"></i></div>
+                    <h3
+                        style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:14px;">
+                        Aged Agarwood</h3>
+                    <p style="font-size:13px;color:var(--ash);line-height:1.85;">Sourced from the deepest forests of
+                        Southeast Asia and aged for a minimum of 10 years to develop its rich, smoky complexity.</p>
+                </div>
+                <div class="ingredient-card reveal d1">
+                    <div class="ingredient-icon"><i class="fa-solid fa-fan"></i></div>
+                    <h3
+                        style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:14px;">
+                        Taif Rose</h3>
+                    <p style="font-size:13px;color:var(--ash);line-height:1.85;">Hand-picked at dawn in the mountains of
+                        Saudi Arabia, bringing a velvety, opulent floral heart to our signature blends.</p>
+                </div>
+                <div class="ingredient-card reveal d2">
+                    <div class="ingredient-icon"><i class="fa-solid fa-droplet"></i></div>
+                    <h3
+                        style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:14px;">
+                        Ambergris</h3>
+                    <p style="font-size:13px;color:var(--ash);line-height:1.85;">A rare oceanic treasure that imparts an
+                        unparalleled warmth and longevity, fixing the fragrance to the skin for over 24 hours.</p>
+                </div>
+                <div class="ingredient-card reveal">
+                    <div class="ingredient-icon"><i class="fa-solid fa-seedling"></i></div>
+                    <h3
+                        style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:14px;">
+                        Indian Sandalwood</h3>
+                    <p style="font-size:13px;color:var(--ash);line-height:1.85;">Creamy, milky sandalwood sustainably
+                        harvested from Mysore, India — the world's finest source for this precious base note.</p>
+                </div>
+                <div class="ingredient-card reveal d1">
+                    <div class="ingredient-icon"><i class="fa-solid fa-star"></i></div>
+                    <h3
+                        style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:14px;">
+                        Persian Saffron</h3>
+                    <p style="font-size:13px;color:var(--ash);line-height:1.85;">The most precious spice on earth,
+                        adding a warm, honey-like radiance and golden richness to our most exclusive compositions.</p>
+                </div>
+                <div class="ingredient-card reveal d2">
+                    <div class="ingredient-icon"><i class="fa-solid fa-wind"></i></div>
+                    <h3
+                        style="font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:400;margin-bottom:14px;">
+                        White Musk</h3>
+                    <p style="font-size:13px;color:var(--ash);line-height:1.85;">A clean, skin-close musk that acts as
+                        the invisible thread tying every composition together, lasting beautifully for 12+ hours.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ THE ALFAIZAM PROMISE (CREATIVE) ══ -->
+    <section class="section" style="background:var(--ink); color:white; overflow:hidden; padding: 120px 0;">
+        <div class="container">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap: 80px;">
+                <!-- Left: Visual -->
+                <div class="promise-visual reveal" style="flex:1; min-width: 320px; position:relative;">
+                    <div
+                        style="position:absolute; top:-20px; left:-20px; width:100%; height:100%; border:1px solid rgba(212, 175, 55, 0.4); z-index:0;">
+                    </div>
+                    <img src="images/hero.png" alt="Alfaizam Quality"
+                        style="width:100%; height:auto; position:relative; z-index:1; object-fit:cover; aspect-ratio:3/4; filter:brightness(0.85);">
+                    <div
+                        style="position:absolute; bottom:-30px; right:-30px; background:var(--gold); padding:35px 40px; z-index:2; text-align:center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
+                        <i class="fa-solid fa-droplet"
+                            style="font-size:36px; color:var(--ink); margin-bottom:12px;"></i>
+                        <p
+                            style="color:var(--ink); font-family:'Jost', sans-serif; font-weight:500; font-size:13px; letter-spacing:3px; text-transform:uppercase; margin:0;">
+                            100% Pure</p>
+                    </div>
+                </div>
+
+                <!-- Right: Content -->
+                <div class="promise-content" style="flex:1.2; min-width: 320px;">
+                    <span class="label" style="margin-bottom:16px;display:block;color:var(--gold);">The Alfaizam
+                        Promise</span>
+                    <h2
+                        style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;margin-bottom:50px; line-height:1.15;">
+                        Crafting the extraordinary, without compromise.</h2>
+
+                    <div style="display:flex; flex-direction:column; gap:40px;">
+                        <div class="reveal d1"
+                            style="display:flex; gap:30px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:35px;">
+                            <span
+                                style="font-family:'Cormorant Garamond',serif; font-size:42px; color:var(--gold); font-style:italic; line-height:0.8;">01</span>
+                            <div>
+                                <h3
+                                    style="font-size:22px; font-weight:400; margin-bottom:12px; letter-spacing:1px; font-family:'Cormorant Garamond',serif;">
+                                    Authentic Heritage</h3>
+                                <p style="font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin:0;">
+                                    Ethically sourced directly from legendary oud farms across the Arabian Peninsula. We
+                                    bypass the middlemen to ensure absolute purity and unmatched authenticity in every
+                                    single drop.</p>
+                            </div>
+                        </div>
+
+                        <div class="reveal d2"
+                            style="display:flex; gap:30px; border-bottom:1px solid rgba(255,255,255,0.08); padding-bottom:35px;">
+                            <span
+                                style="font-family:'Cormorant Garamond',serif; font-size:42px; color:var(--gold); font-style:italic; line-height:0.8;">02</span>
+                            <div>
+                                <h3
+                                    style="font-size:22px; font-weight:400; margin-bottom:12px; letter-spacing:1px; font-family:'Cormorant Garamond',serif;">
+                                    Master Craftsmanship</h3>
+                                <p style="font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin:0;">
+                                    Blended by world-renowned perfumers with decades of experience. Our oils are
+                                    meticulously aged to achieve deep, complex, and enduring scent profiles that evolve
+                                    beautifully on the skin.</p>
+                            </div>
+                        </div>
+
+                        <div class="reveal d3" style="display:flex; gap:30px;">
+                            <span
+                                style="font-family:'Cormorant Garamond',serif; font-size:42px; color:var(--gold); font-style:italic; line-height:0.8;">03</span>
+                            <div>
+                                <h3
+                                    style="font-size:22px; font-weight:400; margin-bottom:12px; letter-spacing:1px; font-family:'Cormorant Garamond',serif;">
+                                    Uncompromising Luxury</h3>
+                                <p style="font-size:15px; color:rgba(255,255,255,0.65); line-height:1.8; margin:0;">From
+                                    our heavy glass flacons to our velvet-lined presentation boxes, every touchpoint is
+                                    meticulously designed to deliver an unforgettable, true luxury experience.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ THE ART OF LAYERING ══ -->
+    <section class="section" style="background:var(--ivory); padding: 120px;">
+        <div class="container">
+            <div style="display:flex; flex-wrap:wrap; align-items:center; gap: 80px;">
+                <!-- Content -->
+                <div class="layering-content reveal" style="flex:1.2; min-width: 320px;">
+                    <span class="label" style="margin-bottom:16px;display:block;">Ancient Traditions</span>
+                    <div class="gold-line gold-line-left" style="margin-bottom:24px;"></div>
+                    <h2
+                        style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;margin-bottom:30px;line-height:1.15;">
+                        The Art of Scent Layering</h2>
+                    <p style="font-size:15px;color:var(--ash);line-height:1.9;margin-bottom:24px;">In Arabian perfumery,
+                        a fragrance is not merely worn; it is built. The ancient art of layering allows you to create a
+                        bespoke olfactory signature that is entirely and uniquely your own.</p>
+                    <p style="font-size:15px;color:var(--ash);line-height:1.9;margin-bottom:40px;">Begin with a rich
+                        base of our concentrated Attar oils applied to pulse points. Allow it to melt into your skin
+                        before misting an enveloping cloud of Eau de Parfum. The result is a multi-dimensional aura that
+                        evolves dynamically and lingers for over 24 hours.</p>
+
+                    <a href="shop.html" class="btn btn-gold" style="padding:16px 40px;">Discover the Collection</a>
+                </div>
+                <!-- Visual -->
+                <div class="layering-visual reveal d1"
+                    style="flex:1; min-width: 320px; display:flex; justify-content:center; position:relative;">
+                    <!-- Arch Image Frame -->
+                    <div
+                        style="width:80%; max-width:400px; border-radius:250px 250px 0 0; overflow:hidden; position:relative; z-index:2; box-shadow:0 30px 60px rgba(0,0,0,0.12);">
+                        <img src="images/attar.png" alt="Scent Layering"
+                            style="width:100%; height:auto; display:block; filter:contrast(1.05) saturate(1.1);">
+                    </div>
+                    <!-- Decorative Elements -->
+                    <div
+                        style="position:absolute; top:10%; right:0; width:120px; height:120px; background:var(--gold); border-radius:50%; opacity:0.1; z-index:1;">
+                    </div>
+                    <div
+                        style="position:absolute; bottom:20%; left:0; width:180px; height:180px; border:1px solid var(--gold); border-radius:50%; opacity:0.3; z-index:3; pointer-events:none;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ══ VALUES ══ -->
+    <div class="value-strip">
+        <div class="value-card reveal">
+            <i class="fa-solid fa-leaf"></i>
+            <h3>Sustainably Sourced</h3>
+            <p>We partner directly with farmers to ensure every ingredient is ethically and sustainably harvested,
+                protecting the ecosystems that give us our finest materials.</p>
+        </div>
+        <div class="value-card reveal d1">
+            <i class="fa-solid fa-flask"></i>
+            <h3>Master Crafted</h3>
+            <p>Each fragrance is composed by our team of 12 master perfumers with a minimum of 15 years' experience,
+                using traditional cold-press and steam distillation methods.</p>
+        </div>
+        <div class="value-card reveal d2">
+            <i class="fa-solid fa-infinity"></i>
+            <h3>Timeless Quality</h3>
+            <p>We never compromise on concentration or quality. Every Alfaizam fragrance is an Extrait de Parfum — the
+                highest possible concentration — built to last 12+ hours.</p>
+        </div>
+    </div>
+
+    <!-- ══ CURATED FAVORITES — SLIDER ══ -->
+    <section class="section" style="background:var(--ivory);">
+        <div class="container">
+            <div
+                style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:40px;padding-bottom:24px;border-bottom:1px solid var(--bd-light);">
+                <div>
+                    <span class="label">Experience The Craft</span>
+                    <div class="gold-line gold-line-left" style="margin-top:12px;"></div>
+                    <h2 style="font-size:42px;margin-top:12px;">Curated Favorites</h2>
+                </div>
+                <a href="shop.html"
+                    style="font-size:9px;letter-spacing:4px;text-transform:uppercase;color:var(--ash);display:flex;align-items:center;gap:10px;transition:color .3s;"
+                    onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--ash)'">
+                    View All <i class="fa-solid fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="smart-slider-section">
+                <button class="smart-slider-prev" id="fav-prev"><i class="fa-solid fa-chevron-left"></i></button>
+                <div class="smart-slider-wrapper">
+                    <div class="smart-slider-track" id="fav-track"></div>
+                </div>
+                <button class="smart-slider-next" id="fav-next"><i class="fa-solid fa-chevron-right"></i></button>
+                <div class="slider-dots" id="fav-dots"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ══ TESTIMONIALS MARQUEE ══ -->
+    <div style="background:var(--cream);padding:80px 0;overflow:hidden;">
+        <div style="display:flex;white-space:nowrap;animation:marquee 42s linear infinite;">
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;"><span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"The
+                    Royal Oud Gold is unlike anything I've experienced. Truly a masterpiece."</span><span
+                    style="color:var(--gold);">✦</span></div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;"><span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"Alfaizam
+                    packaging feels like a luxury gift in itself. Every detail is perfection."</span><span
+                    style="color:var(--gold);">✦</span></div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;"><span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"Finally
+                    a brand true to traditional scent profiles while feeling utterly modern."</span><span
+                    style="color:var(--gold);">✦</span></div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;"><span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"The
+                    Santal Essence has become my signature. I receive compliments every single day."</span><span
+                    style="color:var(--gold);">✦</span></div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;"><span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"The
+                    Royal Oud Gold is unlike anything I've experienced. Truly a masterpiece."</span><span
+                    style="color:var(--gold);">✦</span></div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;"><span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"Alfaizam
+                    packaging feels like a luxury gift in itself. Every detail is perfection."</span><span
+                    style="color:var(--gold);">✦</span></div>
+            <div style="display:inline-flex;align-items:center;gap:32px;padding:0 60px;"><span
+                    style="font-family:'Cormorant Garamond',serif;font-size:18px;font-style:italic;color:var(--charcoal);">"Finally
+                    a brand true to traditional scent profiles while feeling utterly modern."</span><span
+                    style="color:var(--gold);">✦</span></div>
+        </div>
+    </div>
+
+    <!-- ══ NEWSLETTER ══ -->
+    <div class="newsletter-section">
+        <div class="container">
+            <div class="text-center reveal" style="position:relative;z-index:1;">
+                <span class="label" style="margin-bottom:20px;display:block;">Private Access</span>
+                <h2
+                    style="font-family:'Cormorant Garamond',serif;font-size:52px;font-weight:300;color:rgba(244,239,230,.85);margin-bottom:14px;">
+                    Join the Inner Circle
+                </h2>
+                <p
+                    style="font-size:13px;color:rgba(255,255,255,.4);margin-bottom:40px;max-width:400px;margin-left:auto;margin-right:auto;">
+                    First access to limited editions, private events, and the art of Arabian fragrance.
+                </p>
+                <form class="newsletter-form" onsubmit="return false;">
+                    <input type="email" class="newsletter-input" placeholder="Your email address">
+                    <button type="submit" class="btn btn-gold" style="white-space:nowrap;">Join Now</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- ══ FOOTER ══ -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-top">
+                <div class="footer-brand">
+                    <a href="index.html" class="logo" style="color:rgba(244,239,230,.8);font-size:20px;"><span
+                            class="logo-gem"></span>Alfaizam</a>
+                    <p class="footer-brand-text">The ultimate destination for luxury fragrances and authentic Arabian
+                        oud. Crafting emotions since 1992.</p>
+                    <div class="footer-socials">
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-pinterest-p"></i></a>
+                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-tiktok"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Collections</h5>
+                    <ul>
+                        <li><a href="shop.html">Exquisite Oud</a></li>
+                        <li><a href="shop.html">Premium Attar</a></li>
+                        <li><a href="shop.html">Gift Sets</a></li>
+                        <li><a href="shop.html">Bakhoor</a></li>
+                        <li><a href="collections.html">All Collections</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>Customer Care</h5>
+                    <ul>
+                        <li><a href="contact.html">Contact Us</a></li>
+                        <li><a href="why-us.html">Shipping & Returns</a></li>
+                        <li><a href="faq.html">FAQs</a></li>
+                        <li><a href="reviews.html">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h5>The House</h5>
+                    <ul>
+                        <li><a href="about.html">Our Story</a></li>
+                        <li><a href="journal.html">The Journal</a></li>
+                        <li><a href="why-us.html">Why Choose Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2024 Alfaizam. All Rights Reserved.</p>
+                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ══ PRODUCT DATA ══
+        const FAV_PRODUCTS = [
+            { name: 'Royal Oud Gold', cat: 'Pure Oud', price: '$280.00', img: 'images/oud.png', badge: 'Signature', badgeBg: '' },
+            { name: 'Santal Essence', cat: 'Attar Oil', price: '$120.00', img: 'images/attar.png', badge: '', badgeBg: '' },
+            { name: 'Midnight Bloom', cat: 'Eau de Parfum', price: '$195.00', img: 'images/hero.png', badge: 'New', badgeBg: '' },
+            { name: 'Oud Malaki', cat: 'Pure Oud', price: '$320.00', img: 'images/oud.png', badge: 'Bestseller', badgeBg: 'var(--ink)' },
+            { name: 'Rose Extrait', cat: 'Attar Oil', price: '$145.00', img: 'images/attar.png', badge: '', badgeBg: '' },
+            { name: 'Velvet Agarwood', cat: 'Pure Oud', price: '$380.00', img: 'images/hero.png', badge: '', badgeBg: '' },
+            { name: 'Taif Rose Absolute', cat: 'Attar Oil', price: '$310.00', img: 'images/oud.png', badge: 'Signature', badgeBg: '' },
+            { name: 'Heritage Blend', cat: 'Exclusive', price: '$520.00', img: 'images/attar.png', badge: '', badgeBg: '' },
+            { name: 'Saffron Gold', cat: 'Eau de Parfum', price: '$260.00', img: 'images/hero.png', badge: 'Limited', badgeBg: 'var(--gold)' },
+        ];
+
+        // ══ CARD BUILDER ══
+        function buildCard(p) {
+            const badgeHtml = p.badge ? `<span class="prod-badge" style="${p.badgeBg ? 'background:' + p.badgeBg + ';color:' + (p.badgeBg === 'var(--gold)' ? 'var(--ink)' : 'white') + ';' : ''}">${p.badge}</span>` : '';
+            return `
+        <div class="product-card reveal">
+            <div class="prod-img">
+                <img src="${p.img}" alt="${p.name}" loading="lazy">
+                ${badgeHtml}
+                <div class="prod-hover"><div class="prod-hover-action">
+                    <a href="product.html" class="btn btn-gold" style="padding:12px 28px;">Quick View</a>
+                </div></div>
+                <button class="prod-wishlist"><i class="fa-regular fa-heart"></i></button>
+            </div>
+            <div class="prod-info">
+                <p class="prod-cat">${p.cat}</p>
+                <h3 class="prod-name"><a href="product.html">${p.name}</a></h3>
+                <p class="prod-price">${p.price}</p>
+            </div>
+        </div>`;
+        }
+
+        // ══ SMART SLIDER ══
+        class SmartSlider {
+            constructor({ trackEl, prevBtn, nextBtn, dotsEl, products, autoplay = true, autoDelay = 3800 }) {
+                this.track = trackEl; this.prev = prevBtn; this.next = nextBtn;
+                this.dotsEl = dotsEl; this.products = products;
+                this.autoplay = autoplay; this.autoDelay = autoDelay;
+                this.current = 0; this.perView = 5; this.timer = null;
+                this.init();
+            }
+            getPerView() {
+                const w = window.innerWidth;
+                if (w <= 480) return 1.2;
+                if (w <= 576) return 2;
+                if (w <= 768) return 2;
+                if (w <= 992) return 3;
+                if (w <= 1200) return 4;
+                return 5;
+            }
+            totalSlides() { return Math.max(0, this.products.length - Math.floor(this.perView)); }
+            render() { this.track.innerHTML = this.products.map(p => buildCard(p)).join(''); this.resize(); }
+            resize() {
+                this.perView = this.getPerView();
+                const cw = 100 / this.perView;
+                Array.from(this.track.children).forEach(c => {
+                    c.style.width = `calc(${cw}% - 16px)`;
+                    c.style.marginRight = '20px';
+                    c.style.flexShrink = '0';
+                });
+                this.current = Math.min(this.current, this.totalSlides());
+                this.go(this.current, false);
+                this.buildDots();
+            }
+            go(idx, animate = true) {
+                this.current = Math.max(0, Math.min(idx, this.totalSlides()));
+                if (!animate) this.track.style.transition = 'none';
+                else this.track.style.transition = 'transform 0.55s cubic-bezier(0.4,0,0.2,1)';
+                const cw = this.track.children[0]?.offsetWidth || 0;
+                this.track.style.transform = `translateX(-${this.current * (cw + 20)}px)`;
+                this.updateControls(); this.updateDots();
+                if (!animate) setTimeout(() => this.track.style.transition = '', 50);
+            }
+            buildDots() {
+                if (!this.dotsEl) return;
+                const total = this.totalSlides() + 1;
+                if (total <= 1) { this.dotsEl.innerHTML = ''; return; }
+                this.dotsEl.innerHTML = Array.from({ length: total }, (_, i) =>
+                    `<div class="slider-dot ${i === this.current ? 'active' : ''}" data-idx="${i}"></div>`).join('');
+                this.dotsEl.querySelectorAll('.slider-dot').forEach(d => {
+                    d.addEventListener('click', () => { this.go(+d.dataset.idx); this.resetAuto(); });
+                });
+            }
+            updateDots() {
+                if (!this.dotsEl) return;
+                this.dotsEl.querySelectorAll('.slider-dot').forEach((d, i) => d.classList.toggle('active', i === this.current));
+            }
+            updateControls() {
+                this.prev?.classList.toggle('hidden', this.current === 0);
+                this.next?.classList.toggle('hidden', this.current >= this.totalSlides());
+            }
+            startAuto() {
+                if (!this.autoplay) return;
+                this.timer = setInterval(() => {
+                    this.go(this.current >= this.totalSlides() ? 0 : this.current + 1);
+                }, this.autoDelay);
+            }
+            resetAuto() { clearInterval(this.timer); this.startAuto(); }
+            bindEvents() {
+                this.prev?.addEventListener('click', () => { this.go(this.current - 1); this.resetAuto(); });
+                this.next?.addEventListener('click', () => { this.go(this.current + 1); this.resetAuto(); });
+                window.addEventListener('resize', () => this.resize());
+                let sx = 0;
+                this.track.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true });
+                this.track.addEventListener('touchend', e => {
+                    const d = sx - e.changedTouches[0].clientX;
+                    if (Math.abs(d) > 50) { this.go(this.current + (d > 0 ? 1 : -1)); this.resetAuto(); }
+                });
+            }
+            init() { this.render(); this.bindEvents(); this.startAuto(); setTimeout(doReveal, 100); }
+        }
+
+        // ══ INIT SLIDER ══
+        new SmartSlider({
+            trackEl: document.getElementById('fav-track'),
+            prevBtn: document.getElementById('fav-prev'),
+            nextBtn: document.getElementById('fav-next'),
+            dotsEl: document.getElementById('fav-dots'),
+            products: FAV_PRODUCTS, autoplay: true, autoDelay: 3800,
+        });
+
+        // ══ SHARED UI ══
+        const header = document.getElementById('site-header');
+        window.addEventListener('scroll', () => {
+            header.classList.toggle('scrolled', window.scrollY > 80);
+        }, { passive: true });
+
+        function doReveal() {
+            document.querySelectorAll('.reveal').forEach(el => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 60) el.classList.add('visible');
+            });
+        }
+        window.addEventListener('scroll', doReveal, { passive: true });
+        doReveal();
+
+        document.getElementById('search-btn').addEventListener('click', () => {
+            document.getElementById('search-overlay').classList.add('open');
+            setTimeout(() => document.getElementById('search-field').focus(), 300);
+        });
+        document.getElementById('search-close').addEventListener('click', () => document.getElementById('search-overlay').classList.remove('open'));
+        document.getElementById('hamburger').addEventListener('click', () => document.getElementById('mobile-nav').classList.add('open'));
+        document.getElementById('mobile-close').addEventListener('click', () => document.getElementById('mobile-nav').classList.remove('open'));
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') {
+                document.getElementById('search-overlay').classList.remove('open');
+                document.getElementById('mobile-nav').classList.remove('open');
+            }
+        });
+    </script>
+</body>
+
+</html>
