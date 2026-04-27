@@ -26,7 +26,7 @@
         .about-hero-bg {
             position: absolute;
             inset: 0;
-            background-image: url('images/hero.png');
+            background-image: url('https://alfaizam.in/wp-content/uploads/2026/04/lifestyle.jpg');
             background-size: cover;
             background-position: center;
             opacity: .18;
@@ -78,6 +78,7 @@
             letter-spacing: -.02em;
             opacity: 0;
             animation: fadeInUp .9s forwards .55s;
+            color: white;
             margin-bottom: 28px;
         }
 
@@ -524,74 +525,75 @@
             width: 26px;
             border-radius: 4px;
         }
+
+        /* ── Ingredient Grid ── */
+        .ingredient-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        /* ── Splits ── */
+        .promise-split,
+        .layering-split {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 80px;
+        }
+
+        @media (max-width: 992px) {
+            .ingredient-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .ingredient-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .promise-split,
+            .layering-split {
+                gap: 40px;
+            }
+
+            .about-hero-actions {
+                flex-direction: column;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .about-hero-content h1 {
+                font-size: clamp(48px, 12vw, 130px);
+            }
+        }
+
+        @media (max-width: 576px) {
+            .about-hero-content .eyebrow {
+                letter-spacing: 4px;
+                gap: 10px;
+                font-size: 8px;
+            }
+
+            .about-hero-content .eyebrow::before,
+            .about-hero-content .eyebrow::after {
+                width: 20px;
+            }
+
+            .about-hero-actions {
+                width: 100%;
+            }
+
+            .about-hero-actions .btn {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="announcement-bar">
-        <div class="marquee-track">
-            <span class="marquee-item">Crafting Emotions Since 1992 <span class="dot"></span></span>
-            <span class="marquee-item">12 Master Perfumers <span class="dot"></span></span>
-            <span class="marquee-item">200+ Rare Ingredients <span class="dot"></span></span>
-            <span class="marquee-item">50,000+ Happy Clients Worldwide <span class="dot"></span></span>
-            <span class="marquee-item">Crafting Emotions Since 1992 <span class="dot"></span></span>
-            <span class="marquee-item">12 Master Perfumers <span class="dot"></span></span>
-            <span class="marquee-item">200+ Rare Ingredients <span class="dot"></span></span>
-            <span class="marquee-item">50,000+ Happy Clients Worldwide <span class="dot"></span></span>
-        </div>
-    </div>
-
-    <header class="site-header" id="site-header">
-        <div class="container">
-            <div class="header-inner">
-                <div style="display:flex;align-items:center;gap:18px;">
-                    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-                    <a href="index.html" class="logo"><span class="logo-gem"></span>Alfaizam</a>
-                </div>
-                <nav class="main-nav">
-                    <a href="index.html">Home</a>
-                    <a href="shop.html">Shop</a>
-                    <a href="collections.html">Collections</a>
-                    <a href="about.html" style="color:var(--gold-pale)!important;">About</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-                <div class="header-actions">
-                    <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <a href="wishlist.html" class="hide-mobile"><i class="fa-regular fa-heart"></i></a>
-                    <a href="cart.html" style="position:relative;">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span class="cart-badge">0</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
-
-    <nav class="mobile-nav" id="mobile-nav">
-        <button class="mobile-close" id="mobile-close"><i class="fa-solid fa-xmark"></i></button>
-        <ul class="mobile-nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="collections.html">Collections</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="mobile-nav-footer"><a href="wishlist.html">Wishlist</a><a href="cart.html">Bag</a></div>
-    </nav>
-
-    <div class="search-overlay" id="search-overlay">
-        <button class="search-close-btn" id="search-close"><i class="fa-solid fa-xmark"></i></button>
-        <div class="search-body">
-            <span class="search-label">Search Our Collection</span>
-            <input type="text" class="search-field" placeholder="Oud, Attar, Rose…" id="search-field">
-            <div class="search-hints">
-                <span class="search-hint">Royal Oud</span>
-                <span class="search-hint">Santal</span>
-                <span class="search-hint">Gift Sets</span>
-            </div>
-        </div>
-    </div>
 
     <!-- ══ ABOUT HERO ══ -->
     <section class="about-hero">
@@ -660,14 +662,14 @@
             </div>
         </div>
         <div class="philosophy-img">
-            <img src="images/attar.png" alt="Our Process">
+            <img src="https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg" alt="Our Process">
         </div>
     </div>
 
     <!-- ══ SOURCING SPLIT ══ -->
     <div class="philosophy-grid">
         <div class="philosophy-img">
-            <img src="images/oud.png" alt="Ingredients">
+            <img src="https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg" alt="Ingredients">
         </div>
         <div class="philosophy-content" style="background:var(--cream);">
             <div class="philosophy-inner reveal">
@@ -696,7 +698,7 @@
                 <h2 style="font-family:'Cormorant Garamond',serif;font-size:48px;font-weight:300;margin-top:16px;">The
                     Alfaizam Palette</h2>
             </div>
-            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px;">
+            <div class="ingredient-grid">
                 <div class="ingredient-card reveal">
                     <div class="ingredient-icon"><i class="fa-solid fa-tree"></i></div>
                     <h3
@@ -750,15 +752,15 @@
     </section>
 
     <!-- ══ THE ALFAIZAM PROMISE (CREATIVE) ══ -->
-    <section class="section" style="background:var(--ink); color:white; overflow:hidden; padding: 120px 0;">
+    <section class="section" style="background:var(--ink); color:white; overflow:hidden;">
         <div class="container">
-            <div style="display:flex; flex-wrap:wrap; align-items:center; gap: 80px;">
+            <div class="promise-split">
                 <!-- Left: Visual -->
-                <div class="promise-visual reveal" style="flex:1; min-width: 320px; position:relative;">
+                <div class="promise-visual reveal" style="flex:1; min-width: 280px; position:relative;">
                     <div
                         style="position:absolute; top:-20px; left:-20px; width:100%; height:100%; border:1px solid rgba(212, 175, 55, 0.4); z-index:0;">
                     </div>
-                    <img src="images/hero.png" alt="Alfaizam Quality"
+                    <img src="https://alfaizam.in/wp-content/uploads/2026/04/lifestyle.jpg" alt="Alfaizam Quality"
                         style="width:100%; height:auto; position:relative; z-index:1; object-fit:cover; aspect-ratio:3/4; filter:brightness(0.85);">
                     <div
                         style="position:absolute; bottom:-30px; right:-30px; background:var(--gold); padding:35px 40px; z-index:2; text-align:center; box-shadow: 0 20px 40px rgba(0,0,0,0.4);">
@@ -771,7 +773,7 @@
                 </div>
 
                 <!-- Right: Content -->
-                <div class="promise-content" style="flex:1.2; min-width: 320px;">
+                <div class="promise-content" style="flex:1.2; min-width: 280px;">
                     <span class="label" style="margin-bottom:16px;display:block;color:var(--gold);">The Alfaizam
                         Promise</span>
                     <h2
@@ -828,11 +830,11 @@
     </section>
 
     <!-- ══ THE ART OF LAYERING ══ -->
-    <section class="section" style="background:var(--ivory); padding: 120px;">
+    <section class="section" style="background:var(--ivory);">
         <div class="container">
-            <div style="display:flex; flex-wrap:wrap; align-items:center; gap: 80px;">
+            <div class="layering-split">
                 <!-- Content -->
-                <div class="layering-content reveal" style="flex:1.2; min-width: 320px;">
+                <div class="layering-content reveal" style="flex:1.2; min-width: 280px;">
                     <span class="label" style="margin-bottom:16px;display:block;">Ancient Traditions</span>
                     <div class="gold-line gold-line-left" style="margin-bottom:24px;"></div>
                     <h2
@@ -850,11 +852,11 @@
                 </div>
                 <!-- Visual -->
                 <div class="layering-visual reveal d1"
-                    style="flex:1; min-width: 320px; display:flex; justify-content:center; position:relative;">
+                    style="flex:1; min-width: 280px; display:flex; justify-content:center; position:relative;">
                     <!-- Arch Image Frame -->
                     <div
                         style="width:80%; max-width:400px; border-radius:250px 250px 0 0; overflow:hidden; position:relative; z-index:2; box-shadow:0 30px 60px rgba(0,0,0,0.12);">
-                        <img src="images/attar.png" alt="Scent Layering"
+                        <img src="https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg" alt="Scent Layering"
                             style="width:100%; height:auto; display:block; filter:contrast(1.05) saturate(1.1);">
                     </div>
                     <!-- Decorative Elements -->
@@ -1028,15 +1030,15 @@
     <script>
         // ══ PRODUCT DATA ══
         const FAV_PRODUCTS = [
-            { name: 'Royal Oud Gold', cat: 'Pure Oud', price: '$280.00', img: 'images/oud.png', badge: 'Signature', badgeBg: '' },
-            { name: 'Santal Essence', cat: 'Attar Oil', price: '$120.00', img: 'images/attar.png', badge: '', badgeBg: '' },
-            { name: 'Midnight Bloom', cat: 'Eau de Parfum', price: '$195.00', img: 'images/hero.png', badge: 'New', badgeBg: '' },
-            { name: 'Oud Malaki', cat: 'Pure Oud', price: '$320.00', img: 'images/oud.png', badge: 'Bestseller', badgeBg: 'var(--ink)' },
-            { name: 'Rose Extrait', cat: 'Attar Oil', price: '$145.00', img: 'images/attar.png', badge: '', badgeBg: '' },
-            { name: 'Velvet Agarwood', cat: 'Pure Oud', price: '$380.00', img: 'images/hero.png', badge: '', badgeBg: '' },
-            { name: 'Taif Rose Absolute', cat: 'Attar Oil', price: '$310.00', img: 'images/oud.png', badge: 'Signature', badgeBg: '' },
-            { name: 'Heritage Blend', cat: 'Exclusive', price: '$520.00', img: 'images/attar.png', badge: '', badgeBg: '' },
-            { name: 'Saffron Gold', cat: 'Eau de Parfum', price: '$260.00', img: 'images/hero.png', badge: 'Limited', badgeBg: 'var(--gold)' },
+            { name: 'Royal Oud Gold', cat: 'Pure Oud', price: '$280.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: 'Signature', badgeBg: '' },
+            { name: 'Santal Essence', cat: 'Attar Oil', price: '$120.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: '', badgeBg: '' },
+            { name: 'Midnight Bloom', cat: 'Eau de Parfum', price: '$195.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg', badge: 'New', badgeBg: '' },
+            { name: 'Oud Malaki', cat: 'Pure Oud', price: '$320.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: 'Bestseller', badgeBg: 'var(--ink)' },
+            { name: 'Rose Extrait', cat: 'Attar Oil', price: '$145.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: '', badgeBg: '' },
+            { name: 'Velvet Agarwood', cat: 'Pure Oud', price: '$380.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg', badge: '', badgeBg: '' },
+            { name: 'Taif Rose Absolute', cat: 'Attar Oil', price: '$310.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: 'Signature', badgeBg: '' },
+            { name: 'Heritage Blend', cat: 'Exclusive', price: '$520.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: '', badgeBg: '' },
+            { name: 'Saffron Gold', cat: 'Eau de Parfum', price: '$260.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg', badge: 'Limited', badgeBg: 'var(--gold)' },
         ];
 
         // ══ CARD BUILDER ══

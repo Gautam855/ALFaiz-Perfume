@@ -1,0 +1,180 @@
+<!-- wp:group {"align":"full","style":{"spacing":{"blockGap":"1em","padding":{"top":"48px","bottom":"48px","left":"var:preset|spacing|50","right":"var:preset|spacing|50"}}},"layout":{"type":"constrained","justifyContent":"center"}} -->
+<div class="wp-block-group alignfull" style="padding:48px var(--wp--preset--spacing--50);">
+
+    <!-- wp:heading {"textAlign":"center","level":1,"style":{"typography":{"fontSize":"42px","fontStyle":"normal","fontWeight":"700"}}} -->
+    <h1 class="has-text-align-center">Luxury Perfume Collection</h1>
+    <!-- /wp:heading -->
+
+    <!-- wp:paragraph {"align":"center","style":{"typography":{"fontSize":"15px"}}} -->
+    <p class="has-text-align-center">Discover premium fragrances crafted to leave a lasting impression.</p>
+    <!-- /wp:paragraph -->
+
+    <!-- wp:group {"layout":{"type":"flex","flexWrap":"wrap","justifyContent":"center"}} -->
+    <div class="wp-block-group">
+
+        <!-- CATEGORY 1 -->
+        <!-- wp:group {"layout":{"type":"flex","orientation":"vertical","justifyContent":"center"},"style":{"spacing":{"blockGap":"0"}}} -->
+        <div class="wp-block-group">
+            <!-- wp:image {"width":"85px","sizeSlug":"full","linkDestination":"custom","style":{"border":{"radius":"100px"}}} -->
+            <figure class="wp-block-image size-full is-resized">
+                <a href="/collections/men">
+                    <img src="https://images.unsplash.com/photo-1594035910387-fea47794261f?w=300"
+                        style="width:85px;height:85px;object-fit:cover;border-radius:100px;" />
+                </a>
+            </figure>
+            <!-- /wp:image -->
+            <!-- wp:paragraph {"align":"center"} -->
+            <p class="has-text-align-center">Men</p>
+            <!-- /wp:paragraph -->
+        </div>
+        <!-- /wp:group -->
+
+        <!-- CATEGORY 2 -->
+        <div class="wp-block-group">
+            <figure class="wp-block-image size-full is-resized">
+                <a href="/collections/women">
+                    <img src="https://images.unsplash.com/photo-1615634260167-c8cdede054de?w=300"
+                        style="width:85px;height:85px;object-fit:cover;border-radius:100px;" />
+                </a>
+            </figure>
+            <p class="has-text-align-center">Women</p>
+        </div>
+
+        <!-- CATEGORY 3 -->
+        <div class="wp-block-group">
+            <figure class="wp-block-image size-full is-resized">
+                <a href="/collections/unisex">
+                    <img src="https://images.unsplash.com/photo-1588405748880-12d1d2a59d75?w=300"
+                        style="width:85px;height:85px;object-fit:cover;border-radius:100px;" />
+                </a>
+            </figure>
+            <p class="has-text-align-center">Unisex</p>
+        </div>
+
+        <!-- CATEGORY 4 -->
+        <div class="wp-block-group">
+            <figure class="wp-block-image size-full is-resized">
+                <a href="/collections/oud">
+                    <img src="https://images.unsplash.com/photo-1601295452896-8f8b7c2ef6d6?w=300"
+                        style="width:85px;height:85px;object-fit:cover;border-radius:100px;" />
+                </a>
+            </figure>
+            <p class="has-text-align-center">Oud</p>
+        </div>
+
+    </div>
+    <!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
+
+
+<!-- wp:surecart/product-list {"query":{"perPage":12},"style":{"spacing":{"padding":{"top":"50px","bottom":"70px"}}}} -->
+
+<!-- wp:group {"layout":{"type":"flex","justifyContent":"space-between"}} -->
+<div class="wp-block-group">
+
+    <!-- wp:surecart/product-list-sidebar-toggle {"label":"Filters"} /-->
+
+    <!-- wp:surecart/product-list-search {"style":{"layout":{"selfStretch":"fixed","flexSize":"300px"},"border":{"radius":"999px"}}} /-->
+
+</div>
+<!-- /wp:group -->
+
+<!-- wp:surecart/product-list-content {"layout":{"type":"flex","orientation":"horizontal","verticalAlignment":"top"}} -->
+
+<!-- SIDEBAR -->
+<!-- wp:surecart/product-list-sidebar {"style":{"layout":{"selfStretch":"fixed","flexSize":"230px"},"spacing":{"blockGap":"24px"}}} -->
+
+<!-- wp:surecart/product-list-filter-tags /-->
+
+<!-- wp:surecart/product-list-sort-radio-group /-->
+
+<!-- wp:surecart/product-list-filter-checkboxes {"label":"Collections"} /-->
+
+<!-- /wp:surecart/product-list-sidebar -->
+
+
+<!-- PRODUCT GRID -->
+<!-- wp:surecart/product-template-container -->
+
+<!-- wp:surecart/product-template {"layout":{"type":"grid","minimumColumnWidth":"320px"}} -->
+
+<!-- wp:group {"style":{"border":{"radius":"18px"},"spacing":{"blockGap":"0"},"color":{"background":"#ffffff"}}} -->
+<div class="wp-block-group" style="border-radius:18px;background:#ffffff;box-shadow:0 10px 30px rgba(0,0,0,0.06);">
+
+    <!-- wp:cover {"useFeaturedImage":true,"dimRatio":0,"style":{"dimensions":{"aspectRatio":"1"},"border":{"radius":"18px"}}} -->
+    <div class="wp-block-cover" style="border-radius:18px;"></div>
+    <!-- /wp:cover -->
+
+    <!-- wp:group {"style":{"spacing":{"padding":{"top":"22px","bottom":"22px","left":"22px","right":"22px"}}}} -->
+    <div class="wp-block-group" style="padding:22px;">
+
+        <!-- wp:post-terms {"term":"sc_collection","fontSize":"small"} /-->
+
+        <!-- wp:surecart/product-title {"level":2,"style":{"typography":{"fontSize":"20px"}}} /-->
+
+        <!-- wp:surecart/product-review-average-rating-stars {"size":"16px"} /-->
+
+        <!-- wp:group {"layout":{"type":"flex","flexWrap":"nowrap"},"style":{"spacing":{"blockGap":"10px"}}} -->
+        <div class="wp-block-group">
+
+            <!-- wp:surecart/product-scratch-price {"style":{"typography":{"fontSize":"14px"}}} /-->
+
+            <!-- wp:surecart/product-list-price {"style":{"typography":{"fontSize":"16px","fontWeight":"700"}}} /-->
+
+        </div>
+        <!-- /wp:group -->
+
+    </div>
+    <!-- /wp:group -->
+
+</div>
+<!-- /wp:group -->
+
+<!-- /wp:surecart/product-template -->
+
+<!-- wp:surecart/product-list-no-products -->
+<p class="has-text-align-center">No perfumes found.</p>
+<!-- /wp:surecart/product-list-no-products -->
+
+<!-- /wp:surecart/product-template-container -->
+
+<!-- /wp:surecart/product-list-content -->
+
+<!-- wp:surecart/product-pagination -->
+<!-- wp:surecart/product-pagination-previous /-->
+<!-- wp:surecart/product-pagination-numbers /-->
+<!-- wp:surecart/product-pagination-next /-->
+<!-- /wp:surecart/product-pagination -->
+
+<!-- /wp:surecart/product-list -->
+
+
+
+<!-- wp:group {"align":"full","style":{"color":{"background":"#111111"},"spacing":{"padding":{"top":"70px","bottom":"70px","left":"40px","right":"40px"}}},"layout":{"type":"grid","columnCount":4}} -->
+<div class="wp-block-group alignfull has-background" style="background:#111111;padding:70px 40px;">
+
+    <div class="wp-block-group">
+        <p style="color:#c9a45c;"><strong>Long Lasting</strong></p>
+        <p style="color:#ffffff;">Stay fresh all day with premium scents.</p>
+    </div>
+
+    <div class="wp-block-group">
+        <p style="color:#c9a45c;"><strong>Imported Oils</strong></p>
+        <p style="color:#ffffff;">Luxury ingredients for elite fragrance notes.</p>
+    </div>
+
+    <div class="wp-block-group">
+        <p style="color:#c9a45c;"><strong>Elegant Packaging</strong></p>
+        <p style="color:#ffffff;">Beautifully packed for gifting & style.</p>
+    </div>
+
+    <div class="wp-block-group">
+        <p style="color:#c9a45c;"><strong>Fast Delivery</strong></p>
+        <p style="color:#ffffff;">Quick shipping across India.</p>
+    </div>
+
+</div>
+<!-- /wp:group -->

@@ -50,7 +50,7 @@
             position: relative;
             z-index: 2;
             padding: 56px 52px;
-            color: white;
+            color: #ffffff;
         }
 
         .col-hero-content .label {
@@ -252,7 +252,7 @@
         .smart-slider-prev:hover,
         .smart-slider-next:hover {
             background: var(--gold);
-            color: white;
+            color: #ffffff;
             box-shadow: 0 6px 28px rgba(200, 164, 80, 0.4);
         }
 
@@ -387,89 +387,80 @@
                 grid-template-columns: 1fr 1fr;
             }
         }
+
+        /* ── Independent Hero Section for Collections ── */
+        .collections-page-hero {
+            padding: 180px 0 90px;
+            background: var(--ink, #0d0c0b);
+            color: #ffffff;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .collections-page-hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg');
+            background-size: cover;
+            background-position: center;
+            opacity: .12;
+        }
+
+        .collections-page-hero-glow {
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 50% 100%, rgba(200, 164, 80, .1) 0%, transparent 70%);
+        }
+
+        .collections-page-hero-content {
+            position: relative;
+            z-index: 1;
+            padding: 0 20px;
+        }
+
+        .collections-page-hero-content h1 {
+            font-size: clamp(52px, 8vw, 100px);
+            font-weight: 300;
+            letter-spacing: -.02em;
+            margin-top: 20px;
+            font-family: 'Cormorant Garamond', serif;
+        }
+
+        .collections-page-hero-content p {
+            margin-top: 20px;
+            font-size: 13px;
+            color: rgba(255, 255, 255, .4);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            max-width: 520px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.8;
+            font-family: 'Jost', sans-serif;
+        }
+
+        @media (max-width: 768px) {
+            .collections-page-hero {
+                padding: 120px 0 60px;
+            }
+        }
     </style>
 </head>
 
 <body>
 
-    <div class="announcement-bar">
-        <div class="marquee-track">
-            <span class="marquee-item">Complimentary Worldwide Shipping <span class="dot"></span></span>
-            <span class="marquee-item">100% Authentic Arabian Oud <span class="dot"></span></span>
-            <span class="marquee-item">Extrait de Parfum — 12 Hour Longevity <span class="dot"></span></span>
-            <span class="marquee-item">Hand-Crafted by Master Perfumers Since 1992 <span class="dot"></span></span>
-            <span class="marquee-item">Complimentary Worldwide Shipping <span class="dot"></span></span>
-            <span class="marquee-item">100% Authentic Arabian Oud <span class="dot"></span></span>
-            <span class="marquee-item">Extrait de Parfum — 12 Hour Longevity <span class="dot"></span></span>
-            <span class="marquee-item">Hand-Crafted by Master Perfumers Since 1992 <span class="dot"></span></span>
-        </div>
-    </div>
 
-    <header class="site-header opaque" id="site-header">
-        <div class="container">
-            <div class="header-inner">
-                <div style="display:flex;align-items:center;gap:18px;">
-                    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-                    <a href="index.html" class="logo"><span class="logo-gem"></span>Alfaizam</a>
-                </div>
-                <nav class="main-nav">
-                    <a href="index.html">Home</a>
-                    <a href="shop.html">Shop</a>
-                    <a href="collections.html"
-                        style="color:var(--ink)!important;border-bottom:1px solid var(--gold);padding-bottom:2px;">Collections</a>
-                    <a href="about.html">About</a>
-                    <a href="contact.html">Contact</a>
-                </nav>
-                <div class="header-actions">
-                    <button id="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <a href="wishlist.html" class="hide-mobile"><i class="fa-regular fa-heart"></i></a>
-                    <a href="cart.html" style="position:relative;">
-                        <i class="fa-solid fa-bag-shopping"></i>
-                        <span class="cart-badge">0</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </header>
 
-    <nav class="mobile-nav" id="mobile-nav">
-        <button class="mobile-close" id="mobile-close"><i class="fa-solid fa-xmark"></i></button>
-        <ul class="mobile-nav-links">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="shop.html">Shop</a></li>
-            <li><a href="collections.html">Collections</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="mobile-nav-footer"><a href="wishlist.html">Wishlist</a><a href="cart.html">Bag</a></div>
-    </nav>
-
-    <div class="search-overlay" id="search-overlay">
-        <button class="search-close-btn" id="search-close"><i class="fa-solid fa-xmark"></i></button>
-        <div class="search-body">
-            <span class="search-label">Search Our Collection</span>
-            <input type="text" class="search-field" placeholder="Oud, Attar, Rose…" id="search-field">
-            <div class="search-hints">
-                <span class="search-hint">Royal Oud</span>
-                <span class="search-hint">Santal</span>
-                <span class="search-hint">Gift Sets</span>
-                <span class="search-hint">Bakhoor</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- ══ PAGE HERO ══ -->
-    <div class="page-hero" style="padding: 210px 0 100px;">
-        <div class="page-hero-bg"></div>
-        <div class="page-hero-glow"></div>
-        <div class="page-hero-content" style="padding:0 20px;">
+    <!-- ══ COLLECTIONS HERO ══ -->
+    <div class="collections-page-hero">
+        <div class="collections-page-hero-bg"></div>
+        <div class="collections-page-hero-glow"></div>
+        <div class="collections-page-hero-content">
             <span class="label" style="margin-bottom:20px;display:block;">Select Your Journey</span>
             <div class="gold-line gold-line-center" style="margin-top:16px;"></div>
-            <h1 style="margin-top:20px;font-size:clamp(52px,8vw,100px);">Our Collections</h1>
-            <p
-                style="margin-top:20px;font-size:13px;color:rgba(255,255,255,.4);letter-spacing:3px;text-transform:uppercase;max-width:520px;margin-left:auto;margin-right:auto;line-height:1.8;">
-                Four worlds of scent. One house of mastery.
-            </p>
+            <h1>Our Collections</h1>
+            <p>Four worlds of scent. One house of mastery.</p>
         </div>
     </div>
 
@@ -477,7 +468,7 @@
     <div class="collection-hero-grid">
         <!-- Perfume -->
         <div class="col-hero-panel">
-            <img src="images/hero.png" alt="Perfume Collection">
+            <img src="https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg" alt="Perfume Collection">
             <div class="col-hero-count"><span>28</span> Fragrances</div>
             <div class="col-hero-content">
                 <span class="label">The Classic</span>
@@ -489,7 +480,7 @@
         </div>
         <!-- Attar -->
         <div class="col-hero-panel">
-            <img src="images/attar.png" alt="Attar Collection">
+            <img src="https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg" alt="Attar Collection">
             <div class="col-hero-count"><span>16</span> Attars</div>
             <div class="col-hero-content">
                 <span class="label">The Timeless</span>
@@ -501,7 +492,7 @@
         </div>
         <!-- Gift Sets -->
         <div class="col-hero-panel">
-            <img src="images/oud.png" alt="Gift Sets">
+            <img src="https://alfaizam.in/wp-content/uploads/2026/04/discovery.jpg" alt="Gift Sets">
             <div class="col-hero-count"><span>12</span> Sets</div>
             <div class="col-hero-content">
                 <span class="label">The Gift</span>
@@ -513,7 +504,7 @@
         </div>
         <!-- Dakhoon -->
         <div class="col-hero-panel">
-            <img src="images/attar.png" alt="Dakhoon Collection">
+            <img src="https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg" alt="Dakhoon Collection">
             <div class="col-hero-count"><span>9</span> Blends</div>
             <div class="col-hero-content">
                 <span class="label">The Ritual</span>
@@ -587,7 +578,7 @@
     <!-- ══ STORY STRIP ══ -->
     <div class="story-strip">
         <div class="story-img-panel">
-            <img src="images/oud.png" alt="Our Craft">
+            <img src="https://alfaizam.in/wp-content/uploads/2026/04/ingredients.jpg" alt="Our Craft">
         </div>
         <div class="story-text-panel">
             <div class="story-text-inner reveal">
@@ -617,7 +608,7 @@
             </div>
             <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:32px;">
                 <div class="seasonal-card reveal">
-                    <img src="images/attar.png" alt="Spring Floral">
+                    <img src="https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg" alt="Spring Floral">
                     <span class="seasonal-card-tag">Spring</span>
                     <div class="seasonal-card-body">
                         <h3>The Spring Floral Bloom</h3>
@@ -630,7 +621,7 @@
                     </div>
                 </div>
                 <div class="seasonal-card reveal d1">
-                    <img src="images/oud.png" alt="Winter Reserve">
+                    <img src="https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg" alt="Winter Reserve">
                     <span class="seasonal-card-tag" style="background:var(--ink);color:var(--gold);">Winter</span>
                     <div class="seasonal-card-body">
                         <h3>The Winter Smoky Reserve</h3>
@@ -643,7 +634,7 @@
                     </div>
                 </div>
                 <div class="seasonal-card reveal d2">
-                    <img src="images/hero.png" alt="Summer Citrus">
+                    <img src="https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg" alt="Summer Citrus">
                     <span class="seasonal-card-tag"
                         style="background:rgba(200,164,80,.2);color:var(--gold);border:1px solid var(--gold);">Summer</span>
                     <div class="seasonal-card-body">
@@ -763,87 +754,38 @@
         </div>
     </div>
 
-    <!-- ══ FOOTER ══ -->
-    <footer class="site-footer">
-        <div class="container">
-            <div class="footer-top">
-                <div class="footer-brand">
-                    <a href="index.html" class="logo" style="color:rgba(244,239,230,.8);font-size:20px;"><span
-                            class="logo-gem"></span>Alfaizam</a>
-                    <p class="footer-brand-text">The ultimate destination for luxury fragrances and authentic Arabian
-                        oud. Crafting emotions since 1992.</p>
-                    <div class="footer-socials">
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-pinterest-p"></i></a>
-                        <a href="#" class="footer-social-btn"><i class="fa-brands fa-tiktok"></i></a>
-                    </div>
-                </div>
-                <div class="footer-col">
-                    <h5>Collections</h5>
-                    <ul>
-                        <li><a href="shop.html">Exquisite Oud</a></li>
-                        <li><a href="shop.html">Premium Attar</a></li>
-                        <li><a href="shop.html">Gift Sets</a></li>
-                        <li><a href="shop.html">Bakhoor</a></li>
-                        <li><a href="collections.html">All Collections</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>Customer Care</h5>
-                    <ul>
-                        <li><a href="contact.html">Contact Us</a></li>
-                        <li><a href="why-us.html">Shipping & Returns</a></li>
-                        <li><a href="faq.html">FAQs</a></li>
-                        <li><a href="reviews.html">Reviews</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h5>The House</h5>
-                    <ul>
-                        <li><a href="about.html">Our Story</a></li>
-                        <li><a href="journal.html">The Journal</a></li>
-                        <li><a href="why-us.html">Why Choose Us</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2024 Alfaizam. All Rights Reserved.</p>
-                <div class="footer-bottom-links"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
-            </div>
-        </div>
-    </footer>
+
 
     <script>
         // ══ PRODUCT DATA ══
         const COL_PRODUCTS = [
-            { name: 'Oud Malaki', cat: 'Pure Oud', price: '$320.00', img: 'images/oud.png', badge: 'Best Seller', badgeBg: 'var(--ink)', type: ['perfume', 'attar'] },
-            { name: 'Rose Extrait', cat: 'Attar Oil', price: '$145.00', img: 'images/hero.png', badge: '', badgeBg: '', type: ['attar'] },
-            { name: 'Royal Amber', cat: 'Eau de Parfum', price: '$210.00', img: 'images/attar.png', badge: 'Limited', badgeBg: 'var(--gold)', type: ['perfume'] },
-            { name: 'The Signature Set', cat: 'Gift Sets', price: '$450.00', img: 'images/oud.png', badge: '', badgeBg: '', type: ['gifset'] },
-            { name: 'Golden Bakhoor', cat: 'Dakhoon', price: '$90.00', img: 'images/attar.png', badge: '', badgeBg: '', type: ['dakhoon'] },
-            { name: 'Velvet Agarwood', cat: 'Pure Oud', price: '$380.00', img: 'images/oud.png', badge: '', badgeBg: '', type: ['perfume'] },
-            { name: 'Taif Rose Absolute', cat: 'Attar Oil', price: '$310.00', img: 'images/hero.png', badge: 'Signature', badgeBg: '', type: ['attar'] },
-            { name: 'Heritage Blend', cat: 'Exclusive', price: '$520.00', img: 'images/attar.png', badge: '', badgeBg: '', type: ['perfume'] },
-            { name: 'Saffron Gold', cat: 'Eau de Parfum', price: '$260.00', img: 'images/oud.png', badge: 'New', badgeBg: '', type: ['perfume'] },
-            { name: 'Night Bakhoor', cat: 'Dakhoon', price: '$78.00', img: 'images/hero.png', badge: '', badgeBg: '', type: ['dakhoon'] },
-            { name: 'Imperial Musk Set', cat: 'Gift Sets', price: '$380.00', img: 'images/attar.png', badge: 'Limited', badgeBg: 'var(--gold)', type: ['gifset'] },
-            { name: 'Amber Attar', cat: 'Attar Oil', price: '$175.00', img: 'images/oud.png', badge: '', badgeBg: '', type: ['attar'] },
+            { name: 'Oud Malaki', cat: 'Pure Oud', price: '$320.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: 'Best Seller', badgeBg: 'var(--ink)', type: ['perfume', 'attar'] },
+            { name: 'Rose Extrait', cat: 'Attar Oil', price: '$145.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg', badge: '', badgeBg: '', type: ['attar'] },
+            { name: 'Royal Amber', cat: 'Eau de Parfum', price: '$210.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: 'Limited', badgeBg: 'var(--gold)', type: ['perfume'] },
+            { name: 'The Signature Set', cat: 'Gift Sets', price: '$450.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: '', badgeBg: '', type: ['gifset'] },
+            { name: 'Golden Bakhoor', cat: 'Dakhoon', price: '$90.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: '', badgeBg: '', type: ['dakhoon'] },
+            { name: 'Velvet Agarwood', cat: 'Pure Oud', price: '$380.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: '', badgeBg: '', type: ['perfume'] },
+            { name: 'Taif Rose Absolute', cat: 'Attar Oil', price: '$310.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg', badge: 'Signature', badgeBg: '', type: ['attar'] },
+            { name: 'Heritage Blend', cat: 'Exclusive', price: '$520.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: '', badgeBg: '', type: ['perfume'] },
+            { name: 'Saffron Gold', cat: 'Eau de Parfum', price: '$260.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: 'New', badgeBg: '', type: ['perfume'] },
+            { name: 'Night Bakhoor', cat: 'Dakhoon', price: '$78.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg', badge: '', badgeBg: '', type: ['dakhoon'] },
+            { name: 'Imperial Musk Set', cat: 'Gift Sets', price: '$380.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: 'Limited', badgeBg: 'var(--gold)', type: ['gifset'] },
+            { name: 'Amber Attar', cat: 'Attar Oil', price: '$175.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: '', badgeBg: '', type: ['attar'] },
         ];
 
         const NEW_ARRIVALS = [
-            { name: 'Midnight Bloom', cat: 'Eau de Parfum', price: '$195.00', img: 'images/hero.png', badge: 'New', badgeBg: '' },
-            { name: 'Sandalwood Reserve', cat: 'Woody', price: '$220.00', img: 'images/attar.png', badge: 'New', badgeBg: '' },
-            { name: 'Citrus Bloom', cat: 'Fresh Floral', price: '$130.00', img: 'images/oud.png', badge: 'New', badgeBg: '' },
-            { name: 'Arabian Cedar', cat: 'Woody', price: '$190.00', img: 'images/attar.png', badge: 'New', badgeBg: '' },
-            { name: 'Cashmere Musk', cat: 'Eau de Parfum', price: '$230.00', img: 'images/hero.png', badge: 'New', badgeBg: '' },
-            { name: 'Majestic Cardamom', cat: 'Spicy & Warm', price: '$195.00', img: 'images/oud.png', badge: 'New', badgeBg: '' },
-            { name: 'Nightfall Attar', cat: 'Attar Oil', price: '$165.00', img: 'images/attar.png', badge: 'New', badgeBg: '' },
+            { name: 'Midnight Bloom', cat: 'Eau de Parfum', price: '$195.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg', badge: 'New', badgeBg: '' },
+            { name: 'Sandalwood Reserve', cat: 'Woody', price: '$220.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: 'New', badgeBg: '' },
+            { name: 'Citrus Bloom', cat: 'Fresh Floral', price: '$130.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: 'New', badgeBg: '' },
+            { name: 'Arabian Cedar', cat: 'Woody', price: '$190.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: 'New', badgeBg: '' },
+            { name: 'Cashmere Musk', cat: 'Eau de Parfum', price: '$230.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/hero.jpg', badge: 'New', badgeBg: '' },
+            { name: 'Majestic Cardamom', cat: 'Spicy & Warm', price: '$195.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/oud.jpg', badge: 'New', badgeBg: '' },
+            { name: 'Nightfall Attar', cat: 'Attar Oil', price: '$165.00', img: 'https://alfaizam.in/wp-content/uploads/2026/04/attar.jpg', badge: 'New', badgeBg: '' },
         ];
 
         // ══ CARD BUILDER ══
         function buildCard(p) {
-            const badgeHtml = p.badge ? `<span class="prod-badge" style="${p.badgeBg ? 'background:' + p.badgeBg + ';color:' + (p.badgeBg === 'var(--gold)' ? 'var(--ink)' : 'white') + ';' : ''}">${p.badge}</span>` : '';
+            const badgeHtml = p.badge ? `<span class="prod-badge" style="${p.badgeBg ? 'background:' + p.badgeBg + ';color:' + (p.badgeBg === 'var(--gold)' ? 'var(--ink)' : '#ffffff') + ';' : ''}">${p.badge}</span>` : '';
             return `
         <div class="product-card reveal">
             <div class="prod-img">
